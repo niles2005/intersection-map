@@ -5,6 +5,7 @@ import { Shape } from "./shape";
 import { QuadraticCurve } from "./quadraticCurve";
 import { ZebraLine } from "./zebraLine";
 import { Arrow } from "./arrow";
+import { Line } from "./line";
 
 export class Intersection {
   private _canvas: HTMLCanvasElement;
@@ -41,6 +42,8 @@ export class Intersection {
         theGraph = new ZebraLine(this, graphData);
       } else if (type === "arrow") {
         theGraph = new Arrow(this, graphData);
+      } else if (type === "line") {
+        theGraph = new Line(this, graphData);
       }
       if (theGraph) {
         this._graphs.push(theGraph);
