@@ -1,31 +1,34 @@
 import { Graph } from "./graph";
 import { Intersection } from "./intersection";
 
-
 export class Point extends Graph {
-    private _x:number;
-    private _y:number;
-    private  intersection:Intersection;
-    constructor(intersection:Intersection,x:number,y:number) {
-        super();
-        this._x = x;
-        this._y = y;
-    }
+  private _x: number;
+  private _y: number;
+  private intersection: Intersection;
 
-    get x() {
-        return this._x;
-    }
+  static build(data: any, intersection?: Intersection) {
+    return new Point(data, intersection);
+  }
 
-    get y() {
-        return this._y;
-    }
+  constructor(data: any, intersection?: Intersection) {
+    super(data, intersection);
+    this._x = data.x;
+    this._y = data.y;
+  }
 
+  get x() {
+    return this._x;
+  }
 
-    draw(ctx) {
-        let r = 2;
-        ctx.beginPath();
-        ctx.arc(this._x,this._y,r,Math.PI * 2,false);
-        ctx.fillStyle = "red";
-        ctx.fill();
-    }
+  get y() {
+    return this._y;
+  }
+
+  draw(ctx) {
+    let r = 2;
+    ctx.beginPath();
+    ctx.arc(this._x, this._y, r, Math.PI * 2, false);
+    ctx.fillStyle = "red";
+    ctx.fill();
+  }
 }

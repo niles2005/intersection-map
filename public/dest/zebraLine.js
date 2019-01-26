@@ -1,8 +1,10 @@
 import { Graph } from "./graph";
 export class ZebraLine extends Graph {
-    constructor(intersection, data) {
-        super();
-        this._data = data;
+    static build(data, intersection) {
+        return new ZebraLine(data, intersection);
+    }
+    constructor(data, intersection) {
+        super(data, intersection);
         this._p1 = data.p1;
         this._p2 = data.p2;
         this._num = data.num;

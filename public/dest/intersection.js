@@ -1,45 +1,64 @@
 import { Background } from "./background";
 import { Point } from "./point";
 import { Shape } from "./shape";
-import { QuadraticCurve } from "./quadraticCurve";
+import { IntersectCurve } from "./intersectCurve";
 import { ZebraLine } from "./zebraLine";
 import { Arrow } from "./arrow";
-import { Line } from "./line";
+import { LineYellowSolid } from "./lineYellowSolid";
+import { LineWhiteSolid } from "./lineWhiteSolid";
+import { LineYellowDashed } from "./lineYellowDashed";
+import { LineWhiteDashed } from "./lineWhiteDashed";
+import { Curve } from "./curve";
+import { BoardPole } from "./boardPole";
+import { FlagPole } from "./flagPole";
+import { Flag } from "./flag";
 export class Intersection {
     constructor(canvas, data) {
         this._graphs = [];
-        this._mouseClicks = [];
-        this._subImageCenter = new Point(this, 100, 100);
         this._origoX = 0;
         this._origoY = 0;
         this._globalScale = 1;
+        this._graphBuilder = {
+            "点": Point.build,
+            "白实线": LineWhiteSolid.build,
+            "白虚线": LineWhiteDashed.build,
+            "黄实线": LineYellowSolid.build,
+            "黄虚线": LineYellowDashed.build,
+            "斑马线": ZebraLine.build,
+            "相交曲线": IntersectCurve.build,
+            "曲线": Curve.build,
+            "箭头": Arrow.build,
+            "形状": Shape.build,
+            "路牌柱": BoardPole.build,
+            "标志牌柱": FlagPole.build,
+            "标志牌": Flag.build,
+            "红黄绿灯": Flag.buildRYG,
+            "背景图1": Background.build
+        };
         this._canvas = canvas;
         this._ctx = this._canvas.getContext("2d");
         console.dir(data);
         this.initGraphs(data.graphs);
     }
+    get origoX() {
+        return this._origoX;
+    }
+    get origoY() {
+        return this._origoY;
+    }
+    set origoX(x) {
+        this._origoX = x;
+    }
+    set origoY(y) {
+        this._origoY = y;
+    }
     initGraphs(graphsData) {
         graphsData.forEach((graphData) => {
             let type = graphData.type;
             let theGraph = null;
-            if (type === "background") {
-                this._background = new Background(this, graphData);
-                theGraph = this._background;
-            }
-            else if (type === "shape") {
-                theGraph = new Shape(this, graphData);
-            }
-            else if (type === "quadraticCurve") {
-                theGraph = new QuadraticCurve(this, graphData);
-            }
-            else if (type === "zebraLine") {
-                theGraph = new ZebraLine(this, graphData);
-            }
-            else if (type === "arrow") {
-                theGraph = new Arrow(this, graphData);
-            }
-            else if (type === "line") {
-                theGraph = new Line(this, graphData);
+            let func = this._graphBuilder[type];
+            if (func) {
+                theGraph = func(graphData, this);
             }
             if (theGraph) {
                 this._graphs.push(theGraph);
@@ -57,9 +76,10 @@ export class Intersection {
             this._focuxedGraph.setFocusPoint(x, y);
         }
         else {
-            this._mouseClicks.push(new Point(this, x, y));
+            this._mouseClickPoint = new Point({ x: x, y: y });
         }
         this.repaint();
+        return "x: " + Math.round(x) + ", y: " + Math.round(y);
     }
     mouseWheel(event) {
         let posX = (1.0 * (event.offsetX - this._origoX)) /
@@ -88,9 +108,9 @@ export class Intersection {
         this._graphs.forEach(graph => {
             graph.draw(this._ctx);
         });
-        this._mouseClicks.forEach(point => {
-            point.draw(this._ctx);
-        });
+        if (this._mouseClickPoint) {
+            this._mouseClickPoint.draw(this._ctx);
+        }
         this._ctx.restore();
     }
 }

@@ -2,8 +2,6 @@ import { Intersection } from "./intersection";
 import { Graph } from "./graph";
 
 export class Arrow extends Graph {
-  private _intersection: Intersection;
-  private _data: any;
   private _points: Array<number[]> = [];
   static arrowShapes = {
     direct: "0,52.4,-3.9,31.5,-1.4,31.5,-1.4,0,1.2,0,1.2,31.5,3.9,31.5",
@@ -16,10 +14,15 @@ export class Arrow extends Graph {
     "direct-left":
       "-3.9,52.4,-7.9,31.6,-5.3,31.5,-5.4,0.2,-2.6,0,-2.7,3.5,4.1,10.3,4.4,3,7.9,15.8,4.3,29.5,4.3,20.9,-2.6,14,-2.8,31.5,0,31.4,-3.8,52.3"
   };
-  constructor(intersection: Intersection, data: any) {
-    super();
-    this._intersection = intersection;
-    this._data = data;
+
+  static build(data:any,intersection?:Intersection) {
+    return new Arrow(data,intersection);
+  }
+
+  constructor(data: any,intersection?:Intersection) {
+    super(data,intersection);
+
+    this._data.fillStyle = this._data.fillStyle || "white";
 
     let arrowPoints: string = Arrow.arrowShapes[data.name];
     let arr = arrowPoints.split(",");

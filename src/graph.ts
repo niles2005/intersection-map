@@ -1,5 +1,11 @@
+import { Intersection } from "./intersection";
+
 export abstract class Graph {
-    constructor() {
+    protected _data:any;
+    protected _intersection:Intersection;
+    constructor(data:any,intersection?:Intersection) {
+        this._data = data;
+        this._intersection = intersection;
     }
 
     abstract draw(ctx:CanvasRenderingContext2D):void;

@@ -2,14 +2,17 @@ import { Graph } from "./graph";
 import { Intersection } from "./intersection";
 
 export class ZebraLine extends Graph {
-  private _data: any;
   private _p1: { x: number; y: number };
   private _p2: { x: number; y: number };
   private _num: number;
   private _zebraWidth: number;
-  constructor(intersection: Intersection, data: any) {
-    super();
-    this._data = data;
+
+  static build(data: any, intersection?: Intersection) {
+    return new ZebraLine(data, intersection);
+  }
+
+  constructor(data: any,intersection?:Intersection) {
+    super(data,intersection);
     this._p1 = data.p1;
     this._p2 = data.p2;
     this._num = data.num;

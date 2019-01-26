@@ -1,9 +1,11 @@
 import { Graph } from "./graph";
 export class Shape extends Graph {
-    constructor(intersection, data) {
-        super();
+    static build(data, intersection) {
+        return new Shape(data, intersection);
+    }
+    constructor(data, intersection) {
+        super(data, intersection);
         this._intersection = intersection;
-        this._data = data;
         let strPoints = data.points;
         if (strPoints) {
             this._points = strPoints.split(",");

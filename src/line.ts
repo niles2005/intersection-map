@@ -2,14 +2,15 @@ import { Graph } from "./graph";
 import { Intersection } from "./intersection";
 
 export class Line extends Graph {
-  private _p1: { x: number; y: number };
-  private _p2: { x: number; y: number };
-  private _data:any;
-  private _intersection: Intersection;
-  constructor(intersection: Intersection, data:any) {
-    super();
-    this._intersection = intersection;
-    this._data = data;
+  protected _p1: { x: number; y: number };
+  protected _p2: { x: number; y: number };
+
+  static build(data:any,intersection?:Intersection) {
+    return new Line(data,intersection);
+  }
+
+  constructor(data: any,intersection?:Intersection) {
+    super(data,intersection);
     this._p1 = data.p1;
     this._p2 = data.p2;
   }

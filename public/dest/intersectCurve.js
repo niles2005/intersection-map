@@ -1,7 +1,7 @@
 import { Graph } from "./graph";
-export class QuadraticCurve extends Graph {
+export class IntersectCurve extends Graph {
     static build(data, intersection) {
-        return new QuadraticCurve(data, intersection);
+        return new IntersectCurve(data, intersection);
     }
     constructor(data, intersection) {
         super(data, intersection);

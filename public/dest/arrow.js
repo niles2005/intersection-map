@@ -1,10 +1,9 @@
 import { Graph } from "./graph";
 export class Arrow extends Graph {
-    constructor(intersection, data) {
-        super();
+    constructor(data, intersection) {
+        super(data, intersection);
         this._points = [];
-        this._intersection = intersection;
-        this._data = data;
+        this._data.fillStyle = this._data.fillStyle || "white";
         let arrowPoints = Arrow.arrowShapes[data.name];
         let arr = arrowPoints.split(",");
         let curve = false;
@@ -29,6 +28,9 @@ export class Arrow extends Graph {
                 this._points.push([x, y]);
             }
         }
+    }
+    static build(data, intersection) {
+        return new Arrow(data, intersection);
     }
     _drawShape(ctx) {
         ctx.beginPath();

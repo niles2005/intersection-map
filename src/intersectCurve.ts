@@ -2,15 +2,22 @@ import { Graph } from "./graph";
 import { Intersection } from "./intersection";
 declare var interscetion_line;
 
-export class QuadraticCurve extends Graph {
+/**
+ * 2短线相交产生的曲线,以2条线相交产生的交点作为曲线的控制点。
+ */
+export class IntersectCurve extends Graph {
   private _p1: { x: number; y: number };
   private _p2: { x: number; y: number };
   private _p3: { x: number; y: number };
   private _p4: { x: number; y: number };
   private _px: { x: number; y: number };
-  private intersection: Intersection;
-  constructor(intersection: Intersection, data: any) {
-    super();
+
+  static build(data: any, intersection?: Intersection) {
+    return new IntersectCurve(data, intersection);
+  }
+
+  constructor(data: any,intersection?:Intersection) {
+    super(data,intersection);
     let strPoints = data.points;
     let arr = strPoints.split(",");
     if (arr.length === 8) {

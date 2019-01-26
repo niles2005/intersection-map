@@ -4,10 +4,13 @@ import { Intersection } from "./intersection";
 
 export class Background extends Graph {
     private _bgImage:HTMLImageElement;
-    private _intersection:Intersection;
-    constructor(intersection:Intersection,data:any) {
-        super();
-        this._intersection = intersection;
+
+    static build(data:any,intersection?:Intersection) {
+        return new Background(data,intersection);
+    }
+    
+    constructor(data: any,intersection?:Intersection) {
+        super(data,intersection);
         this._bgImage = new Image();
         this._bgImage.src = data.src;
         this._bgImage.onload = () => {

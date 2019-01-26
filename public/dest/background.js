@@ -1,8 +1,10 @@
 import { Graph } from "./graph";
 export class Background extends Graph {
-    constructor(intersection, data) {
-        super();
-        this._intersection = intersection;
+    static build(data, intersection) {
+        return new Background(data, intersection);
+    }
+    constructor(data, intersection) {
+        super(data, intersection);
         this._bgImage = new Image();
         this._bgImage.src = data.src;
         this._bgImage.onload = () => {
