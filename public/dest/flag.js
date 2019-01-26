@@ -33,4 +33,45 @@ export class Flag extends Graph {
             ctx.restore();
         }
     }
+    initGui() {
+        let self = this;
+        this._gui = new dat.GUI();
+        console.dir(this._gui);
+        let guiData = {
+            x: this._data["px"].x,
+            y: this._data["px"].y,
+            angle: this._data["angle"],
+            scaleX: this._data["scale"].x,
+            scaleY: this._data["scale"].y,
+            src: this._data["src"]
+        };
+        function updateData() {
+            self._data["px"].x = guiData.x;
+            self._data["px"].y = guiData.y;
+            self._data["angle"] = guiData.angle;
+            self._data["scale"].x = guiData.scaleX;
+            self._data["scale"].y = guiData.scaleY;
+            self._data["src"] = guiData.src;
+            self._intersection.repaint();
+        }
+        this._gui.add(guiData, "x").onFinishChange(updateData);
+        this._gui.add(guiData, "y").onFinishChange(updateData);
+        this._gui
+            .add(guiData, "angle", { "水平": Math.PI / 2, "垂直": 0 })
+            .name("角度")
+            .onFinishChange(updateData);
+        this._gui
+            .add(guiData, "scaleX")
+            .name("比例X")
+            .onFinishChange(updateData);
+        this._gui
+            .add(guiData, "scaleY")
+            .name("比例Y")
+            .onFinishChange(updateData);
+        this._gui
+            .add(guiData, "src")
+            .name("图片")
+            .onFinishChange(updateData);
+        return this._gui;
+    }
 }

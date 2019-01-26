@@ -74,6 +74,11 @@ export class Intersection {
         console.log(x + " , " + y);
         if (this._focuxedGraph) {
             this._focuxedGraph.setFocusPoint(x, y);
+            if (this._gui) {
+                this._gui.destroy();
+                this._gui = null;
+            }
+            this._gui = this._focuxedGraph.initGui();
         }
         else {
             this._mouseClickPoint = new Point({ x: x, y: y });

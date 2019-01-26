@@ -5,4 +5,7 @@ export class Graph {
     }
     setFocusPoint(x, y) {
     }
+    initGui() {
+        return this._gui;
+    }
 }

@@ -851,6 +851,7 @@ var data = {
     },
     {
       type: "红黄绿灯",
+      focus: true,
       angle: Math.PI / 2,
       px: { x: 413, y: 446 },
       scale: {x:0.09,y:0.09}

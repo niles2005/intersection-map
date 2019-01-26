@@ -1,5 +1,7 @@
 import { Graph } from "./graph";
 import { Intersection } from "./intersection";
+import { GUI } from "dat-gui";
+declare var dat;
 
 export class Flag extends Graph {
   private _image: HTMLImageElement;
@@ -40,5 +42,54 @@ export class Flag extends Graph {
       ctx.drawImage(this._image, 0, 0);
       ctx.restore();
     }
+  }
+
+  initGui(): GUI {
+    let self = this;
+    // if (!this._gui) {
+      this._gui = new dat.GUI();
+      console.dir(this._gui)
+    // }
+    let guiData = {
+      x: this._data["px"].x,
+      y: this._data["px"].y,
+      angle: this._data["angle"],
+      scaleX: this._data["scale"].x,
+      scaleY: this._data["scale"].y,
+      src: this._data["src"]
+    };
+
+    function updateData() {
+      self._data["px"].x = guiData.x;
+      self._data["px"].y = guiData.y;
+      self._data["angle"] = guiData.angle;
+      self._data["scale"].x = guiData.scaleX;
+      self._data["scale"].y = guiData.scaleY;
+      self._data["src"] = guiData.src;
+
+      self._intersection.repaint();
+    }
+
+    // this._gui.remember(this._data);
+    this._gui.add(guiData, "x").onFinishChange(updateData);
+    this._gui.add(guiData, "y").onFinishChange(updateData);
+    this._gui
+      .add(guiData, "angle",{ "水平": Math.PI / 2, "垂直": 0 })
+      .name("角度")
+      .onFinishChange(updateData);
+    this._gui
+      .add(guiData, "scaleX")
+      .name("比例X")
+      .onFinishChange(updateData);
+    this._gui
+      .add(guiData, "scaleY")
+      .name("比例Y")
+      .onFinishChange(updateData);
+    this._gui
+      .add(guiData, "src")
+      .name("图片")
+      .onFinishChange(updateData);
+
+    return this._gui;
   }
 }

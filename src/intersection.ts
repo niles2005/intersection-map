@@ -13,6 +13,8 @@ import { Curve } from "./curve";
 import { BoardPole } from "./boardPole";
 import { FlagPole } from "./flagPole";
 import { Flag } from "./flag";
+import { GUI } from "dat-gui";
+declare var dat;
 
 export class Intersection {
   private _canvas: HTMLCanvasElement;
@@ -25,6 +27,7 @@ export class Intersection {
   private _origoX = 0;
   private _origoY = 0;
   private _globalScale = 1;
+  private _gui: GUI;
 
   private _graphBuilder:any = {
     "点": Point.build,
@@ -92,10 +95,18 @@ export class Intersection {
     console.log(x + " , " + y);
     if (this._focuxedGraph) {
       this._focuxedGraph.setFocusPoint(x, y);
+      if(this._gui) {
+        this._gui.destroy();
+        this._gui = null;
+      }
+      this._gui = this._focuxedGraph.initGui();
     } else {
       this._mouseClickPoint = new Point({x:x, y:y});
     }
     this.repaint();
+
+
+
     return "x: " + Math.round(x) + ", y: " + Math.round(y);
   } 
 
