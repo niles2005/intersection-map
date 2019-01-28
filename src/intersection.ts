@@ -10,8 +10,8 @@ import { LineWhiteSolid } from "./lineWhiteSolid";
 import { LineYellowDashed } from "./lineYellowDashed";
 import { LineWhiteDashed } from "./lineWhiteDashed";
 import { Curve } from "./curve";
-import { BoardPole } from "./boardPole";
-import { FlagPole } from "./flagPole";
+import { PoleBoard } from "./PoleBoard";
+import { PoleFlag } from "./PoleFlag";
 import { Flag } from "./flag";
 import { GUI } from "dat-gui";
 declare var dat;
@@ -22,7 +22,7 @@ export class Intersection {
   private _graphs: Graph[] = [];
   private _mouseClickPoint: Point;
   private _mosueMovePoint: Point;
-  private _focuxedGraph: Graph;
+  private _selectGraph: Graph;
 
   private _origoX = 0;
   private _origoY = 0;
@@ -40,8 +40,8 @@ export class Intersection {
     "曲线" : Curve.build,
     "箭头": Arrow.build,
     "形状": Shape.build,
-    "路牌柱" : BoardPole.build,
-    "标志牌柱": FlagPole.build,
+    "路牌柱" : PoleBoard.build,
+    "标志牌柱": PoleFlag.build,
     "标志牌": Flag.build,
     "红黄绿灯": Flag.buildRYG,
     "背景图1": Background.build
@@ -50,7 +50,6 @@ export class Intersection {
   constructor(canvas: HTMLCanvasElement, data: any) {
     this._canvas = canvas;
     this._ctx = this._canvas.getContext("2d");
-    console.dir(data);
     
     this.initGraphs(data.graphs);
   }
@@ -82,9 +81,6 @@ export class Intersection {
       }
       if (theGraph) {
         this._graphs.push(theGraph);
-        if (graphData.focus) {
-          this._focuxedGraph = theGraph;
-        }
       }
     });
   }
@@ -93,30 +89,23 @@ export class Intersection {
     let x = (event.offsetX - this._origoX) / this._globalScale;
     let y = (event.offsetY - this._origoY) / this._globalScale;
 
-    if(this._focuxedGraph && this._focuxedGraph.containPoint(x,y)) {
+    if(this._selectGraph && this._selectGraph.containPoint(x,y)) {
 
     } else {
+      if(this._selectGraph) {
+        this._selectGraph.destroyGui();
+        this._selectGraph = null;
+      }
       for(let i=this._graphs.length-1;i>=0;i--) {
         if(this._graphs[i].containPoint(x,y)) {
-          this._focuxedGraph = this._graphs[i];
+          this._selectGraph = this._graphs[i];
+          this._selectGraph.initGui();
           break;
         }
       }
     }
-    console.log(x + " , " + y);
-    if (this._focuxedGraph) {
-      // this._focuxedGraph.setFocusPoint(x, y);
-      if(this._gui) {
-        this._gui.destroy();
-        this._gui = null;
-      }
-      this._gui = this._focuxedGraph.initGui();
-    } else {
-      this._mouseClickPoint = new Point({x:x, y:y});
-    }
+    this._mouseClickPoint = new Point({x:x, y:y});
     this.repaint();
-
-
 
     return "x: " + Math.round(x) + ", y: " + Math.round(y);
   } 
@@ -161,6 +150,10 @@ export class Intersection {
     this._graphs.forEach(graph => {
       graph.draw(this._ctx);
     });
+    if(this._selectGraph) {
+      this._selectGraph.draw(this._ctx);
+      this._selectGraph.drawBounds(this._ctx);
+    }
 
     if(this._mouseClickPoint) {
       this._mouseClickPoint.draw(this._ctx);

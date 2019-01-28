@@ -1,6 +1,7 @@
 import { Intersection } from "./intersection";
 import { Graph } from "./graph";
 import { Bounds } from "./utils/bounds";
+declare var dat;
 
 export class Arrow extends Graph {
   private _points: Array<number[]> = [];
@@ -16,16 +17,22 @@ export class Arrow extends Graph {
       "-3.9,52.4,-7.9,31.6,-5.3,31.5,-5.4,0.2,-2.6,0,-2.7,3.5,4.1,10.3,4.4,3,7.9,15.8,4.3,29.5,4.3,20.9,-2.6,14,-2.8,31.5,0,31.4,-3.8,52.3"
   };
 
-  static build(data:any,intersection?:Intersection) {
-    return new Arrow(data,intersection);
+  static build(data: any, intersection?: Intersection) {
+    return new Arrow(data, intersection);
   }
 
-  constructor(data: any,intersection?:Intersection) {
-    super(data,intersection);
+  constructor(data: any, intersection?: Intersection) {
+    super(data, intersection);
+
+    this._data.angle = this._data.angle || 0;
 
     this._data.fillStyle = this._data.fillStyle || "white";
+    this.init();
+  }
 
-    let arrowPoints: string = Arrow.arrowShapes[data.name];
+  private init() {
+    this._points = [];
+    let arrowPoints: string = Arrow.arrowShapes[this._data.name];
     let arr = arrowPoints.split(",");
 
     let curve = false;
@@ -41,18 +48,28 @@ export class Arrow extends Graph {
         curveX = parseFloat(strX);
         curveY = parseFloat(strY);
         curve = true;
-        this._bounds.expandToIncludePoint(curveX,curveY);
+        this._bounds.expandToIncludePoint(curveX, curveY);
         continue;
       }
       let x = parseFloat(strX);
       let y = parseFloat(strY);
-      this._bounds.expandToIncludePoint(x,y);
+      this._bounds.expandToIncludePoint(x, y);
       if (curve) {
         this._points.push([curveX, curveY, x, y]);
         curve = false;
       } else {
         this._points.push([x, y]);
       }
+    }
+    if (!this._data.angle) {
+      this._data.angle = 0;
+    }
+    if (this._data.angle) {
+      this._bounds.rotate((this._data.angle / 180) * Math.PI);
+    }
+
+    if (this._data.px) {
+      this._bounds.translate(this._data.px.x, this._data.px.y);
     }
   }
 
@@ -74,20 +91,73 @@ export class Arrow extends Graph {
 
   draw(ctx: CanvasRenderingContext2D) {
     ctx.save();
-    if (this._data.translate) {
-      ctx.translate(this._data.translate.x, this._data.translate.y);
+    if (this._data.px) {
+      ctx.translate(this._data.px.x, this._data.px.y);
     }
-    if (this._data.angle) {
-      ctx.rotate(this._data.angle);
-    }
+    ctx.rotate((this._data.angle / 180) * Math.PI);
     if (this._data.scale) {
       ctx.scale(this._data.scale.x, this._data.scale.y);
     }
-    ctx.fillStyle = this._data.fillStyle || "white";
+    ctx.fillStyle = this._data.fillStyle;
 
     this._drawShape(ctx);
     ctx.closePath();
     ctx.fill();
     ctx.restore();
+  }
+
+  initGui() {
+    let self = this;
+    this._gui = new dat.GUI();
+    let guiData = {
+      name: this._data.name,
+      x: this._data["px"].x,
+      y: this._data["px"].y,
+      angle: this._data["angle"],
+      scaleX: this._data["scale"].x,
+      scaleY: this._data["scale"].y,
+      fillStyle: this._data["fillStyle"]
+    };
+
+    function updateData() {
+      self._data.name = guiData.name;
+      self._data["px"].x = guiData.x;
+      self._data["px"].y = guiData.y;
+      self._data["angle"] = guiData.angle;
+      self._data["scale"].x = guiData.scaleX;
+      self._data["scale"].y = guiData.scaleY;
+      self._data["fillStyle"] = guiData.fillStyle;
+
+      self.init();
+      self._intersection.repaint();
+    }
+
+    this._gui
+      .add(guiData, "name", {
+        直行: "direct",
+        左转: "left",
+        右转: "right",
+        直行左转: "direct-left",
+        直行右转: "direct-right"
+      })
+      .onFinishChange(updateData);
+    this._gui.add(guiData, "x").onFinishChange(updateData);
+    this._gui.add(guiData, "y").onFinishChange(updateData);
+    this._gui
+      .add(guiData, "angle")
+      .name("角度")
+      .onFinishChange(updateData);
+    this._gui
+      .add(guiData, "scaleX")
+      .name("比例X")
+      .onFinishChange(updateData);
+    this._gui
+      .add(guiData, "scaleY")
+      .name("比例Y")
+      .onFinishChange(updateData);
+    this._gui
+      .add(guiData, "fillStyle")
+      .name("填充样式")
+      .onFinishChange(updateData);
   }
 }

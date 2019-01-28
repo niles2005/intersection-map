@@ -1,20 +1,21 @@
 import { Graph } from "./graph";
 import { Intersection } from "./intersection";
 import { Bounds } from "./utils/bounds";
+import { Pole } from "./pole";
 
 /**
  * 路牌柱
  */
-export class BoardPole extends Graph {
-  private _px: { x: number; y: number };
+export class PoleBoard extends Pole {
   static build(data: any, intersection?: Intersection) {
-    return new BoardPole(data, intersection);
+    return new PoleBoard(data, intersection);
   }
 
   constructor(data: any, intersection?: Intersection) {
     super(data, intersection);
-    this._px = data.px;
+  }
 
+  init() {
     this._bounds = new Bounds();
     this._bounds.expandToIncludePoint(-12, -12);
     this._bounds.expandToIncludePoint(12,12);
@@ -29,7 +30,7 @@ export class BoardPole extends Graph {
       ctx.translate(this._px.x, this._px.y);
     }
     if (this._data.angle) {
-      ctx.rotate(this._data.angle);
+      ctx.rotate(this._data.angle / 180 * Math.PI);
     }
     if (this._data.scale) {
       ctx.scale(this._data.scale.x, this._data.scale.y);

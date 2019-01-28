@@ -1,6 +1,5 @@
 import { Graph } from "./graph";
 import { Intersection } from "./intersection";
-import { GUI } from "dat-gui";
 import { Bounds } from './utils/bounds';
 declare var dat;
 
@@ -23,21 +22,32 @@ export class Flag extends Graph {
     this._image = new Image();
     this._image.src = data.src;
     this._image.onload = () => {
-      this._bounds = new Bounds();
-      let x = this._image.width;
-      let y = this._image.height;
-      if (this._data.scale) {
-        x *= this._data.scale.x;
-        y *= this._data.scale.y;
-      }
-      this._bounds.expandToIncludePoint(-x/2,-y/2);
-      this._bounds.expandToIncludePoint(x/2,y/2);
-      if (this._px) {
-        this._bounds.translate(this._px.x, this._px.y);
-      }
-      this._intersection.repaint();
+      this.init();
     };
   }
+
+  init() {
+    this._bounds = new Bounds();
+    let x = this._image.width;
+    let y = this._image.height;
+    if (this._data.scale) {
+      x *= this._data.scale.x;
+      y *= this._data.scale.y;
+    }
+    this._bounds.expandToIncludePoint(-x/2,-y/2);
+    this._bounds.expandToIncludePoint(x/2,y/2);
+
+    if (!this._data.angle) {
+      this._data.angle = 0;
+    }
+    if (this._data.angle) {
+      this._bounds.rotate(this._data.angle / 180 * Math.PI);
+    }
+    if (this._px) {
+      this._bounds.translate(this._px.x, this._px.y);
+    }
+    this._intersection.repaint();
+}
 
   draw(ctx: CanvasRenderingContext2D) {
     if (this._image.width) {
@@ -46,7 +56,7 @@ export class Flag extends Graph {
         ctx.translate(this._px.x, this._px.y);
       }
       if (this._data.angle) {
-        ctx.rotate(this._data.angle);
+        ctx.rotate(this._data.angle / 180 * Math.PI);
       }
       if (this._data.scale) {
         ctx.scale(this._data.scale.x, this._data.scale.y);
@@ -57,12 +67,9 @@ export class Flag extends Graph {
     }
   }
 
-  initGui(): GUI {
+  initGui() {
     let self = this;
-    // if (!this._gui) {
-      this._gui = new dat.GUI();
-      console.dir(this._gui)
-    // }
+    this._gui = new dat.GUI();
     let guiData = {
       x: this._data["px"].x,
       y: this._data["px"].y,
@@ -80,14 +87,14 @@ export class Flag extends Graph {
       self._data["scale"].y = guiData.scaleY;
       self._data["src"] = guiData.src;
 
+      self.init();
       self._intersection.repaint();
     }
 
-    // this._gui.remember(this._data);
     this._gui.add(guiData, "x").onFinishChange(updateData);
     this._gui.add(guiData, "y").onFinishChange(updateData);
     this._gui
-      .add(guiData, "angle",{ "水平": Math.PI / 2, "垂直": 0 })
+      .add(guiData, "angle")
       .name("角度")
       .onFinishChange(updateData);
     this._gui
@@ -102,7 +109,5 @@ export class Flag extends Graph {
       .add(guiData, "src")
       .name("图片")
       .onFinishChange(updateData);
-
-    return this._gui;
   }
 }

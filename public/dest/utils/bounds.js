@@ -118,6 +118,20 @@ export class Bounds {
             this.init(this._minx + transX, this._miny + transY, this._maxx + transX, this._maxy + transY);
         }
     }
+    rotate(alpha) {
+        let newX1 = this._minx * Math.cos(alpha) - this._miny * Math.sin(alpha);
+        let newY1 = this._miny * Math.cos(alpha) + this._minx * Math.sin(alpha);
+        let newX2 = this._maxx * Math.cos(alpha) - this._maxy * Math.sin(alpha);
+        let newY2 = this._maxy * Math.cos(alpha) + this._maxx * Math.sin(alpha);
+        let newX3 = this._minx * Math.cos(alpha) - this._maxy * Math.sin(alpha);
+        let newY3 = this._maxy * Math.cos(alpha) + this._minx * Math.sin(alpha);
+        let newX4 = this._maxx * Math.cos(alpha) - this._miny * Math.sin(alpha);
+        let newY4 = this._miny * Math.cos(alpha) + this._maxx * Math.sin(alpha);
+        this._minx = Math.min(newX1, newX2, newX3, newX4);
+        this._maxx = Math.max(newX1, newX2, newX3, newX4);
+        this._miny = Math.min(newY1, newY2, newY3, newY4);
+        this._maxy = Math.max(newY1, newY2, newY3, newY4);
+    }
     intersectBounds(bounds) {
         if (this.isNull() || bounds.isNull())
             return false;

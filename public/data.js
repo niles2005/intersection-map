@@ -28,294 +28,6 @@ var data = {
       type: "相交曲线1",
       points: "540,906,540,625,  515,545,   403,532,25,532"
     },
-    {
-      type: "斑马线",
-      p1: { x: 521, y: 278.5 },
-      p2: { x: 642, y: 278.5 },
-      angle: Math.PI,
-      num: 14,
-      zebraWidth: 14
-    },
-    {
-      type: "斑马线",
-      p1: { x: 661, y: 278 },
-      p2: { x: 765, y: 278 },
-      angle: Math.PI,
-      num: 12,
-      zebraWidth: 14
-    },
-    {
-      type: "斑马线",
-      p1: { x: 373, y: 379 },
-      p2: { x: 373, y: 444 },
-      angle: Math.PI,
-      num: 10,
-      zebraWidth: 19
-    },
-    {
-      type: "斑马线",
-      p1: { x: 373, y: 451 },
-      p2: { x: 373, y: 533.5 },
-      angle: Math.PI,
-      num: 13,
-      zebraWidth: 19
-    },
-    {
-      type: "斑马线",
-      p1: { x: 924, y: 389.5 },
-      p2: { x: 924, y: 473 },
-      angle: Math.PI,
-      num: 13,
-      zebraWidth: 19
-    },
-    {
-      type: "斑马线",
-      p1: { x: 924, y: 480 },
-      p2: { x: 924, y: 544 },
-      angle: Math.PI,
-      num: 10,
-      zebraWidth: 19
-    },
-    {
-      type: "斑马线",
-      p1: { x: 548, y: 640.5 },
-      p2: { x: 652, y: 640.5 },
-      angle: Math.PI,
-      num: 12,
-      zebraWidth: 14
-    },
-    {
-      type: "斑马线",
-      p1: { x: 671, y: 640 },
-      p2: { x: 792, y: 640 },
-      angle: Math.PI,
-      num: 14,
-      zebraWidth: 14
-    },
-    {
-      type:"箭头",
-      name:"direct-right",
-      scale: {x:0.8,y:0.8},
-      translate:{x:550.5,y:209}
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:575.5,y:209}
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:599.5,y:209}
-    },
-
-    {
-      type:"箭头",
-      name:"left",
-      scale: {x:0.8,y:0.8},
-      translate:{x:626,y:210}
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:553,y:332}
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:578,y:331}
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:605,y:331}
-    },
-    {
-      type:"箭头",
-      name:"left",
-      scale: {x:0.8,y:0.8},
-      translate:{x:632,y:334},
-      angle:Math.PI * 1.95 
-    },
-
-
-    {
-      type:"箭头",
-      name:"direct-right",
-      scale: {x:0.8,y:0.8},
-      translate:{x:1008,y:407},
-      angle:Math.PI / 2
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:1008,y:424},
-      angle:Math.PI / 2
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:1008,y:442},
-      angle:Math.PI / 2
-    },
-    {
-      type:"箭头",
-      name:"left",
-      scale: {x:0.8,y:0.8},
-      translate:{x:1008,y:462},
-      angle:Math.PI / 2
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:852,y:406},
-      angle:Math.PI / 2
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:852,y:424.5},
-      angle:Math.PI / 2
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:852,y:447.5},
-      angle:Math.PI / 2
-    },
-    {
-      type:"箭头",
-      name:"left",
-      scale: {x:0.8,y:0.8},
-      translate:{x:848,y:469},
-      angle:Math.PI / 2 * 0.95
-    },
-
-
-    {
-      type:"箭头",
-      name:"direct-right",
-      scale: {x:0.8,y:0.8},
-      translate:{x:752,y:704},
-      angle:Math.PI
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:728,y:704},
-      angle:Math.PI
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:703,y:704},
-      angle:Math.PI
-    },
-    {
-      type:"箭头",
-      name:"left",
-      scale: {x:0.8,y:0.8},
-      translate:{x:677,y:703},
-      angle:Math.PI
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:754,y:575},
-      angle:Math.PI
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:729,y:576},
-      angle:Math.PI
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:695,y:576},
-      angle:Math.PI
-    },
-    {
-      type:"箭头",
-      name:"left",
-      scale: {x:0.8,y:0.8},
-      translate:{x:668,y:574},
-      angle:Math.PI / 2 * 1.91
-    },
-
-
-    {
-      type:"箭头",
-      name:"direct-right",
-      scale: {x:0.8,y:0.8},
-      translate:{x:291,y:510},
-      angle:-Math.PI/2 
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:292,y:492},
-      angle:-Math.PI/2
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:292,y:474},
-      angle:-Math.PI/2
-    },
-    {
-      type:"箭头",
-      name:"left",
-      scale: {x:0.8,y:0.8},
-      translate:{x:292,y:455},
-      angle:-Math.PI/2
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:444,y:511},
-      angle:-Math.PI/2
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:444,y:493},
-      angle:-Math.PI/2
-    },
-    {
-      type:"箭头",
-      name:"direct",
-      scale: {x:0.8,y:0.8},
-      translate:{x:444,y:469},
-      angle:-Math.PI/2
-    },
-    {
-      type:"箭头",
-      name:"left",
-      scale: {x:0.8,y:0.8},
-      translate:{x:446,y:453},
-      angle:Math.PI / 2 * 0.91 + Math.PI
-    },
 
     {
       type: "白实线",
@@ -693,20 +405,310 @@ var data = {
     },
 
     {
+      type: "斑马线",
+      p1: { x: 521, y: 278.5 },
+      p2: { x: 642, y: 278.5 },
+      angle: 180,
+      num: 14,
+      zebraWidth: 14
+    },
+    {
+      type: "斑马线",
+      p1: { x: 661, y: 278 },
+      p2: { x: 765, y: 278 },
+      angle: 180,
+      num: 12,
+      zebraWidth: 14
+    },
+    {
+      type: "斑马线",
+      p1: { x: 373, y: 379 },
+      p2: { x: 373, y: 444 },
+      angle: 180,
+      num: 10,
+      zebraWidth: 19
+    },
+    {
+      type: "斑马线",
+      p1: { x: 373, y: 451 },
+      p2: { x: 373, y: 533.5 },
+      angle: 180,
+      num: 13,
+      zebraWidth: 19
+    },
+    {
+      type: "斑马线",
+      p1: { x: 924, y: 389.5 },
+      p2: { x: 924, y: 473 },
+      angle: 180,
+      num: 13,
+      zebraWidth: 19
+    },
+    {
+      type: "斑马线",
+      p1: { x: 924, y: 480 },
+      p2: { x: 924, y: 544 },
+      angle: 180,
+      num: 10,
+      zebraWidth: 19
+    },
+    {
+      type: "斑马线",
+      p1: { x: 548, y: 640.5 },
+      p2: { x: 652, y: 640.5 },
+      angle: 180,
+      num: 12,
+      zebraWidth: 14
+    },
+    {
+      type: "斑马线",
+      p1: { x: 671, y: 640 },
+      p2: { x: 792, y: 640 },
+      angle: 180,
+      num: 14,
+      zebraWidth: 14
+    },
+    {
+      type:"箭头",
+      name:"direct-right",
+      scale: {x:0.8,y:0.8},
+      px:{x:550.5,y:209}
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:575.5,y:209}
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:599.5,y:209}
+    },
+
+    {
+      type:"箭头",
+      name:"left",
+      scale: {x:0.8,y:0.8},
+      px:{x:626,y:210}
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:553,y:332}
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:578,y:331}
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:605,y:331}
+    },
+    {
+      type:"箭头",
+      name:"left",
+      scale: {x:0.8,y:0.8},
+      px:{x:632,y:334},
+      angle:180 * 1.95 
+    },
+
+
+    {
+      type:"箭头",
+      name:"direct-right",
+      scale: {x:0.8,y:0.8},
+      px:{x:1008,y:407},
+      angle:90
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:1008,y:424},
+      angle:90
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:1008,y:442},
+      angle:90
+    },
+    {
+      type:"箭头",
+      name:"left",
+      scale: {x:0.8,y:0.8},
+      px:{x:1008,y:462},
+      angle:90
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:852,y:406},
+      angle:90
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:852,y:424.5},
+      angle:90
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:852,y:447.5},
+      angle:90
+    },
+    {
+      type:"箭头",
+      name:"left",
+      scale: {x:0.8,y:0.8},
+      px:{x:848,y:469},
+      angle:90 * 0.95
+    },
+
+
+    {
+      type:"箭头",
+      name:"direct-right",
+      scale: {x:0.8,y:0.8},
+      px:{x:752,y:704},
+      angle:180
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:728,y:704},
+      angle:180
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:703,y:704},
+      angle:180
+    },
+    {
+      type:"箭头",
+      name:"left",
+      scale: {x:0.8,y:0.8},
+      px:{x:677,y:703},
+      angle:180
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:754,y:575},
+      angle:180
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:729,y:576},
+      angle:180
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:695,y:576},
+      angle:180
+    },
+    {
+      type:"箭头",
+      name:"left",
+      scale: {x:0.8,y:0.8},
+      px:{x:668,y:574},
+      angle:90 * 1.91
+    },
+
+
+    {
+      type:"箭头",
+      name:"direct-right",
+      scale: {x:0.8,y:0.8},
+      px:{x:291,y:510},
+      angle:-90 
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:292,y:492},
+      angle:-90
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:292,y:474},
+      angle:-90
+    },
+    {
+      type:"箭头",
+      name:"left",
+      scale: {x:0.8,y:0.8},
+      px:{x:292,y:455},
+      angle:-90
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:444,y:511},
+      angle:-90
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:444,y:493},
+      angle:-90
+    },
+    {
+      type:"箭头",
+      name:"direct",
+      scale: {x:0.8,y:0.8},
+      px:{x:444,y:469},
+      angle:-90
+    },
+    {
+      type:"箭头",
+      name:"left",
+      scale: {x:0.8,y:0.8},
+      px:{x:446,y:453},
+      angle:90 * 0.91 + 180
+    },
+
+
+    {
       type: "路牌柱",
       px: { x: 516, y: 211 },
-      angle: Math.PI/2
+      angle: 90
     },
     {
       type: "路牌柱",
       px: { x: 756, y: 243 },
-      angle: -Math.PI/2
+      angle: -90
     },
 
     {
       type: "路牌柱",
       px: { x: 1019, y: 389 },
-      angle: -Math.PI
+      angle: 180
     },
     {
       type: "路牌柱",
@@ -716,7 +718,7 @@ var data = {
     {
       type: "路牌柱",
       px: { x: 530, y: 679 },
-      angle: -Math.PI/2
+      angle: -90
     },
 
     {
@@ -736,7 +738,7 @@ var data = {
     {
       type: "标志牌柱",
       px: { x: 643, y: 299 },
-      angle: Math.PI / 2
+      angle: 90
     },
     {
       type: "标志牌柱",
@@ -753,7 +755,7 @@ var data = {
     {
       type: "标志牌柱",
       px: { x: 657, y: 624 },
-      angle: Math.PI / 2
+      angle: 90
     },
     {
       type: "标志牌柱",
@@ -764,14 +766,14 @@ var data = {
     {
       type: "标志牌",
       px: { x: 673, y: 341 },
-      angle: Math.PI * 3 / 4,
+      angle: 180 * 3 / 4,
       scale: {x:0.13,y:0.13},
       src: "./images/直行.png"
     },
     {
       type: "标志牌",
       px: { x: 803, y: 511 },
-      angle: Math.PI * 5 / 4,
+      angle: 180 * 5 / 4,
       scale: {x:0.13,y:0.13},
       src: "./images/直行.png"
     },
@@ -779,14 +781,14 @@ var data = {
     {
       type: "标志牌",
       px: { x: 602, y: 565 },
-      angle: Math.PI * 7 / 4,
+      angle: 180 * 7 / 4,
       scale: {x:0.13,y:0.13},
       src: "./images/直行.png"
     },
     {
       type: "标志牌",
       px: { x: 422, y: 408 },
-      angle: Math.PI * 9 / 4,
+      angle: 180 * 9 / 4,
       scale: {x:0.13,y:0.13},
       src: "./images/直行.png"
     },
@@ -834,25 +836,24 @@ var data = {
     {
       type: "红黄绿灯",
       px: { x: 891, y: 519 },
-      angle: Math.PI / 2,
+      angle: 90,
       scale: {x:0.09,y:0.09}
     },
     {
       type: "红黄绿灯",
-      angle: Math.PI / 2,
+      angle: 90,
       px: { x: 891, y: 530 },
       scale: {x:0.09,y:0.09}
     },
     {
       type: "红黄绿灯",
       px: { x: 413, y: 435 },
-      angle: Math.PI / 2,
+      angle: 90,
       scale: {x:0.09,y:0.09}
     },
     {
       type: "红黄绿灯",
-      focus: true,
-      angle: Math.PI / 2,
+      angle: 90,
       px: { x: 413, y: 446 },
       scale: {x:0.09,y:0.09}
     },

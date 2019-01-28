@@ -3,6 +3,13 @@ export class Graph {
         this._data = data;
         this._intersection = intersection;
     }
+    drawBounds(ctx) {
+        if (this._bounds) {
+            ctx.strokeStyle = "blue";
+            ctx.lineWidth = 2;
+            ctx.strokeRect(this._bounds.minX, this._bounds.minY, this._bounds.width, this._bounds.height);
+        }
+    }
     setFocusPoint(x, y) {
     }
     containPoint(x, y) {
@@ -11,6 +18,11 @@ export class Graph {
         }
     }
     initGui() {
-        return this._gui;
+    }
+    destroyGui() {
+        if (this._gui) {
+            this._gui.destroy();
+            this._gui = null;
+        }
     }
 }
