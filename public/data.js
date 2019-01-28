@@ -6,7 +6,7 @@ var data = {
     },
     {
       type: "形状",
-      fillStyle: "rgba(128,221,174,1)",
+      fillStyle: "rgba(128,221,174,0.3)",
       strokeStyle: "#000000",
       lineWidth: 0.5,
       points:
@@ -471,50 +471,50 @@ var data = {
     {
       type:"箭头",
       name:"direct-right",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:550.5,y:209}
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:575.5,y:209}
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:599.5,y:209}
     },
 
     {
       type:"箭头",
       name:"left",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:626,y:210}
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:553,y:332}
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:578,y:331}
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:605,y:331}
     },
     {
       type:"箭头",
       name:"left",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:632,y:334},
       angle:180 * 1.95 
     },
@@ -523,56 +523,56 @@ var data = {
     {
       type:"箭头",
       name:"direct-right",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:1008,y:407},
       angle:90
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:1008,y:424},
       angle:90
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:1008,y:442},
       angle:90
     },
     {
       type:"箭头",
       name:"left",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:1008,y:462},
       angle:90
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:852,y:406},
       angle:90
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:852,y:424.5},
       angle:90
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:852,y:447.5},
       angle:90
     },
     {
       type:"箭头",
       name:"left",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:848,y:469},
       angle:90 * 0.95
     },
@@ -581,56 +581,56 @@ var data = {
     {
       type:"箭头",
       name:"direct-right",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:752,y:704},
       angle:180
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:728,y:704},
       angle:180
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:703,y:704},
       angle:180
     },
     {
       type:"箭头",
       name:"left",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:677,y:703},
       angle:180
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:754,y:575},
       angle:180
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:729,y:576},
       angle:180
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:695,y:576},
       angle:180
     },
     {
       type:"箭头",
       name:"left",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:668,y:574},
       angle:90 * 1.91
     },
@@ -639,56 +639,56 @@ var data = {
     {
       type:"箭头",
       name:"direct-right",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:291,y:510},
       angle:-90 
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:292,y:492},
       angle:-90
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:292,y:474},
       angle:-90
     },
     {
       type:"箭头",
       name:"left",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:292,y:455},
       angle:-90
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:444,y:511},
       angle:-90
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:444,y:493},
       angle:-90
     },
     {
       type:"箭头",
       name:"direct",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:444,y:469},
       angle:-90
     },
     {
       type:"箭头",
       name:"left",
-      scale: {x:0.8,y:0.8},
+      scale: 0.8,
       px:{x:446,y:453},
       angle:90 * 0.91 + 180
     },
@@ -766,102 +766,198 @@ var data = {
     {
       type: "标志牌",
       px: { x: 673, y: 341 },
-      angle: 180 * 3 / 4,
-      scale: {x:0.13,y:0.13},
-      src: "./images/直行.png"
+      angle: 0,
+      scale: 0.25,
+      src: "./images/行驶方向.png"
     },
     {
       type: "标志牌",
       px: { x: 803, y: 511 },
-      angle: 180 * 5 / 4,
-      scale: {x:0.13,y:0.13},
-      src: "./images/直行.png"
+      angle: 90,
+      scale: 0.25,
+      src: "./images/行驶方向.png"
     },
     
     {
       type: "标志牌",
       px: { x: 602, y: 565 },
-      angle: 180 * 7 / 4,
-      scale: {x:0.13,y:0.13},
-      src: "./images/直行.png"
+      angle: 180,
+      scale: 0.25,
+      src: "./images/行驶方向.png"
     },
     {
       type: "标志牌",
       px: { x: 422, y: 408 },
-      angle: 180 * 9 / 4,
-      scale: {x:0.13,y:0.13},
-      src: "./images/直行.png"
+      angle: 270,
+      scale: 0.25,
+      src: "./images/行驶方向.png"
     },
 
     {
       type: "红黄绿灯",
       px: { x: 654, y: 304 },
-      scale: {x:0.09,y:0.09}
+      scale: 0.09
     },
     {
       type: "红黄绿灯",
       px: { x: 665, y: 304 },
-      scale: {x:0.09,y:0.09}
+      scale: 0.09
     },
     {
       type: "红黄绿灯",
       px: { x: 731, y: 307 },
-      scale: {x:0.09,y:0.09}
+      scale: 0.09
     },
     {
       type: "红黄绿灯",
       px: { x: 742, y: 307 },
-      scale: {x:0.09,y:0.09}
+      scale: 0.09
     },
     {
       type: "红黄绿灯",
       px: { x: 650, y: 606 },
-      scale: {x:0.09,y:0.09}
+      scale: 0.09
     },
     {
       type: "红黄绿灯",
       px: { x: 661, y: 605 },
-      scale: {x:0.09,y:0.09}
+      scale: 0.09
     },
     {
       type: "红黄绿灯",
       px: { x: 547, y: 605 },
-      scale: {x:0.09,y:0.09}
+      scale: 0.09
     },
     {
       type: "红黄绿灯",
       px: { x: 558, y: 605 },
-      scale: {x:0.09,y:0.09}
+      scale: 0.09
     },
     {
       type: "红黄绿灯",
       px: { x: 891, y: 519 },
       angle: 90,
-      scale: {x:0.09,y:0.09}
+      scale: 0.09
     },
     {
       type: "红黄绿灯",
       angle: 90,
       px: { x: 891, y: 530 },
-      scale: {x:0.09,y:0.09}
+      scale: 0.09
     },
     {
       type: "红黄绿灯",
       px: { x: 413, y: 435 },
       angle: 90,
-      scale: {x:0.09,y:0.09}
+      scale: 0.09
     },
     {
       type: "红黄绿灯",
       angle: 90,
       px: { x: 413, y: 446 },
-      scale: {x:0.09,y:0.09}
+      scale: 0.09
+    },
+    {
+      type: "红黄绿灯",
+      angle: 90,
+      px: { x: 413, y: 446 },
+      scale: 0.09
+    },
+
+    {
+      type: "标志牌",
+      px: { x: 52, y: 301 },
+      scale: 0.6,
+      src:"./images/道路入口2.png"
+    },
+    {
+      type: "标志牌",
+      px: { x: 207, y: 246 },
+      scale: 0.4,
+      src:"./images/道路入口1.png"
+    },
+
+    {
+      type: "标志牌",
+      px: { x: 390, y: 283 },
+      angle:-90,
+      scale: 0.3,
+      src:"./images/禁行摩托.png"
+    },
+    {
+      type: "标志牌",
+      px: { x: 391, y: 321 },
+      angle:-90,
+      scale: 0.3,
+      src:"./images/禁鸣喇叭.png"
+    },
+    
+    {
+      type: "标志牌",
+      px: { x: 857, y: 228 },
+      scale: 0.25,
+      src:"./images/禁行路牌2.png"
+    },
+    
+    {
+      type: "标志牌",
+      px: { x: 1087, y: 590 },
+      scale: 0.25,
+      src:"./images/禁行路牌2.png"
+    },
+    
+
+
+    {
+      type: "标志牌",
+      px: { x: 165, y: 631 },
+      scale: 0.5,
+      src:"./images/禁行路牌.png"
+    },
+    {
+      type: "标志牌",
+      px: { x: 308, y: 630 },
+      scale: 0.5,
+      src:"./images/旅游.png"
+    },
+    {
+      type: "标志牌",
+      px: { x: 370, y: 643 },
+      scale: 0.5,
+      src:"./images/禁鸣喇叭.png"
     },
 
     
     
-    
-    
-    
+
+    {
+      type: "标志牌",
+      px: { x: 892, y: 576 },
+      scale: 0.25,
+      angle:90,
+      src:"./images/禁行非机动车.png"
+    },
+    {
+      type: "标志牌",
+      px: { x: 896, y: 635 },
+      scale: 0.25,
+      angle:90,
+      src:"./images/禁行摩托.png"
+    },
+    {
+      type: "标志牌",
+      px: { x: 940, y: 633 },
+      scale: 0.4,
+      angle:90,
+      src:"./images/行车注意.png"
+    },
+
+    {
+      type: "文字",
+      px: { x: 1093, y: 376 },
+      fontSize:20,
+      fontName:"宋体",
+      label:"陆家浜路"
+    },
   ]
 };

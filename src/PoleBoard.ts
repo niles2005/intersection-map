@@ -33,7 +33,7 @@ export class PoleBoard extends Pole {
       ctx.rotate(this._data.angle / 180 * Math.PI);
     }
     if (this._data.scale) {
-      ctx.scale(this._data.scale.x, this._data.scale.y);
+      ctx.scale(this._data.scale, this._data.scale);
     }
     ctx.fillStyle = this._data.fillStyle || "black";
     ctx.beginPath();

@@ -96,7 +96,7 @@ export class Arrow extends Graph {
     }
     ctx.rotate((this._data.angle / 180) * Math.PI);
     if (this._data.scale) {
-      ctx.scale(this._data.scale.x, this._data.scale.y);
+      ctx.scale(this._data.scale, this._data.scale);
     }
     ctx.fillStyle = this._data.fillStyle;
 
@@ -114,8 +114,7 @@ export class Arrow extends Graph {
       x: this._data["px"].x,
       y: this._data["px"].y,
       angle: this._data["angle"],
-      scaleX: this._data["scale"].x,
-      scaleY: this._data["scale"].y,
+      scale: this._data["scale"],
       fillStyle: this._data["fillStyle"]
     };
 
@@ -124,8 +123,7 @@ export class Arrow extends Graph {
       self._data["px"].x = guiData.x;
       self._data["px"].y = guiData.y;
       self._data["angle"] = guiData.angle;
-      self._data["scale"].x = guiData.scaleX;
-      self._data["scale"].y = guiData.scaleY;
+      self._data["scale"] = guiData.scale;
       self._data["fillStyle"] = guiData.fillStyle;
 
       self.init();
@@ -148,12 +146,8 @@ export class Arrow extends Graph {
       .name("角度")
       .onFinishChange(updateData);
     this._gui
-      .add(guiData, "scaleX")
-      .name("比例X")
-      .onFinishChange(updateData);
-    this._gui
-      .add(guiData, "scaleY")
-      .name("比例Y")
+      .add(guiData, "scale")
+      .name("比例")
       .onFinishChange(updateData);
     this._gui
       .add(guiData, "fillStyle")

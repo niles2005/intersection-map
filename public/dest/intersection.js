@@ -12,6 +12,7 @@ import { Curve } from "./curve";
 import { PoleBoard } from "./PoleBoard";
 import { PoleFlag } from "./PoleFlag";
 import { Flag } from "./flag";
+import { Label } from "./label";
 export class Intersection {
     constructor(canvas, data) {
         this._graphs = [];
@@ -19,21 +20,22 @@ export class Intersection {
         this._origoY = 0;
         this._globalScale = 1;
         this._graphBuilder = {
-            "点": Point.build,
-            "白实线": LineWhiteSolid.build,
-            "白虚线": LineWhiteDashed.build,
-            "黄实线": LineYellowSolid.build,
-            "黄虚线": LineYellowDashed.build,
-            "斑马线": ZebraLine.build,
-            "相交曲线": IntersectCurve.build,
-            "曲线": Curve.build,
-            "箭头": Arrow.build,
-            "形状": Shape.build,
-            "路牌柱": PoleBoard.build,
-            "标志牌柱": PoleFlag.build,
-            "标志牌": Flag.build,
-            "红黄绿灯": Flag.buildRYG,
-            "背景图1": Background.build
+            点: Point.build,
+            白实线: LineWhiteSolid.build,
+            白虚线: LineWhiteDashed.build,
+            黄实线: LineYellowSolid.build,
+            黄虚线: LineYellowDashed.build,
+            斑马线: ZebraLine.build,
+            相交曲线: IntersectCurve.build,
+            曲线: Curve.build,
+            箭头: Arrow.build,
+            形状: Shape.build,
+            路牌柱: PoleBoard.build,
+            标志牌柱: PoleFlag.build,
+            标志牌: Flag.build,
+            红黄绿灯: Flag.buildRYG,
+            背景图: Background.build,
+            文字: Label.build
         };
         this._canvas = canvas;
         this._ctx = this._canvas.getContext("2d");
