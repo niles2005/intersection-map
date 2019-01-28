@@ -1,5 +1,6 @@
 import { Graph } from "./graph";
 import { Intersection } from "./intersection";
+import { Bounds } from "./utils/bounds";
 
 export class ZebraLine extends Graph {
   private _p1: { x: number; y: number };
@@ -17,6 +18,21 @@ export class ZebraLine extends Graph {
     this._p2 = data.p2;
     this._num = data.num;
     this._zebraWidth = data.zebraWidth || 10;
+
+    this._bounds = new Bounds();
+    let theta = Math.atan2(this._p2.y - this._p1.y, this._p2.x - this._p1.x);
+    let x1 = this._p1.x + this._zebraWidth * Math.cos(theta - Math.PI / 2);
+    let y1 = this._p1.y + this._zebraWidth * Math.sin(theta - Math.PI / 2);
+    let x2 = this._p1.x + this._zebraWidth * Math.cos(theta + Math.PI / 2);
+    let y2 = this._p1.y + this._zebraWidth * Math.sin(theta + Math.PI / 2);
+    this._bounds.expandToIncludePoint(x1,y1);
+    this._bounds.expandToIncludePoint(x2,y2);
+    let x3 = this._p2.x + this._zebraWidth * Math.cos(theta - Math.PI / 2);
+    let y3 = this._p2.y + this._zebraWidth * Math.sin(theta - Math.PI / 2);
+    let x4 = this._p2.x + this._zebraWidth * Math.cos(theta + Math.PI / 2);
+    let y4 = this._p2.y + this._zebraWidth * Math.sin(theta + Math.PI / 2);
+    this._bounds.expandToIncludePoint(x3,y3);
+    this._bounds.expandToIncludePoint(x4,y4);
   }
 
   draw(ctx: CanvasRenderingContext2D) {

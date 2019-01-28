@@ -1,6 +1,7 @@
 import { Graph } from "./graph";
 import { Intersection } from "./intersection";
 import { GUI } from "dat-gui";
+import { Bounds } from './utils/bounds';
 declare var dat;
 
 export class Flag extends Graph {
@@ -22,6 +23,18 @@ export class Flag extends Graph {
     this._image = new Image();
     this._image.src = data.src;
     this._image.onload = () => {
+      this._bounds = new Bounds();
+      let x = this._image.width;
+      let y = this._image.height;
+      if (this._data.scale) {
+        x *= this._data.scale.x;
+        y *= this._data.scale.y;
+      }
+      this._bounds.expandToIncludePoint(-x/2,-y/2);
+      this._bounds.expandToIncludePoint(x/2,y/2);
+      if (this._px) {
+        this._bounds.translate(this._px.x, this._px.y);
+      }
       this._intersection.repaint();
     };
   }

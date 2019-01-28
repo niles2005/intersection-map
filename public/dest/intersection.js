@@ -71,9 +71,18 @@ export class Intersection {
     mouseClick(event) {
         let x = (event.offsetX - this._origoX) / this._globalScale;
         let y = (event.offsetY - this._origoY) / this._globalScale;
+        if (this._focuxedGraph && this._focuxedGraph.containPoint(x, y)) {
+        }
+        else {
+            for (let i = this._graphs.length - 1; i >= 0; i--) {
+                if (this._graphs[i].containPoint(x, y)) {
+                    this._focuxedGraph = this._graphs[i];
+                    break;
+                }
+            }
+        }
         console.log(x + " , " + y);
         if (this._focuxedGraph) {
-            this._focuxedGraph.setFocusPoint(x, y);
             if (this._gui) {
                 this._gui.destroy();
                 this._gui = null;

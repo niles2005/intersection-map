@@ -5,6 +5,11 @@ export class Graph {
     }
     setFocusPoint(x, y) {
     }
+    containPoint(x, y) {
+        if (this._bounds) {
+            return this._bounds.containPoint(x, y);
+        }
+    }
     initGui() {
         return this._gui;
     }

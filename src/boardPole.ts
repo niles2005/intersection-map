@@ -1,5 +1,6 @@
 import { Graph } from "./graph";
 import { Intersection } from "./intersection";
+import { Bounds } from "./utils/bounds";
 
 /**
  * 路牌柱
@@ -13,6 +14,13 @@ export class BoardPole extends Graph {
   constructor(data: any, intersection?: Intersection) {
     super(data, intersection);
     this._px = data.px;
+
+    this._bounds = new Bounds();
+    this._bounds.expandToIncludePoint(-12, -12);
+    this._bounds.expandToIncludePoint(12,12);
+    if (this._px) {
+      this._bounds.translate(this._px.x, this._px.y);
+    }
   }
 
   draw(ctx: CanvasRenderingContext2D) {

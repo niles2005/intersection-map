@@ -1,4 +1,5 @@
 import { Graph } from "./graph";
+import { Bounds } from './utils/bounds';
 export class Flag extends Graph {
     static build(data, intersection) {
         return new Flag(data, intersection);
@@ -13,6 +14,18 @@ export class Flag extends Graph {
         this._image = new Image();
         this._image.src = data.src;
         this._image.onload = () => {
+            this._bounds = new Bounds();
+            let x = this._image.width;
+            let y = this._image.height;
+            if (this._data.scale) {
+                x *= this._data.scale.x;
+                y *= this._data.scale.y;
+            }
+            this._bounds.expandToIncludePoint(-x / 2, -y / 2);
+            this._bounds.expandToIncludePoint(x / 2, y / 2);
+            if (this._px) {
+                this._bounds.translate(this._px.x, this._px.y);
+            }
             this._intersection.repaint();
         };
     }

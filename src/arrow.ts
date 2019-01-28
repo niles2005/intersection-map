@@ -1,5 +1,6 @@
 import { Intersection } from "./intersection";
 import { Graph } from "./graph";
+import { Bounds } from "./utils/bounds";
 
 export class Arrow extends Graph {
   private _points: Array<number[]> = [];
@@ -30,6 +31,8 @@ export class Arrow extends Graph {
     let curve = false;
     let curveX: number, curveY: number;
 
+    this._bounds = new Bounds();
+
     for (let i = 0; i < arr.length; i += 2) {
       let strX = arr[i];
       let strY = arr[i + 1];
@@ -38,10 +41,12 @@ export class Arrow extends Graph {
         curveX = parseFloat(strX);
         curveY = parseFloat(strY);
         curve = true;
+        this._bounds.expandToIncludePoint(curveX,curveY);
         continue;
       }
       let x = parseFloat(strX);
       let y = parseFloat(strY);
+      this._bounds.expandToIncludePoint(x,y);
       if (curve) {
         this._points.push([curveX, curveY, x, y]);
         curve = false;

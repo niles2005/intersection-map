@@ -1,4 +1,5 @@
 import { Graph } from "./graph";
+import { Bounds } from "./utils/bounds";
 export class BoardPole extends Graph {
     static build(data, intersection) {
         return new BoardPole(data, intersection);
@@ -6,6 +7,12 @@ export class BoardPole extends Graph {
     constructor(data, intersection) {
         super(data, intersection);
         this._px = data.px;
+        this._bounds = new Bounds();
+        this._bounds.expandToIncludePoint(-12, -12);
+        this._bounds.expandToIncludePoint(12, 12);
+        if (this._px) {
+            this._bounds.translate(this._px.x, this._px.y);
+        }
     }
     draw(ctx) {
         ctx.save();

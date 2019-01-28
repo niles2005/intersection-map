@@ -1,5 +1,6 @@
 import { Intersection } from "./intersection";
 import { Graph } from "./graph";
+import { Bounds } from "./utils/bounds";
 
 export class Curve extends Graph {
   protected _p1: { x: number; y: number };
@@ -17,6 +18,11 @@ export class Curve extends Graph {
     this._px = data.px;
     this._data.strokeStyle = this._data.strokeStyle || "white";
     this._data.lineWidth = this._data.lineWidth || 1;
+    this._bounds = new Bounds();
+    this._bounds.expandToIncludePoint(this._p1.x, this._p1.y);
+    this._bounds.expandToIncludePoint(this._px.x, this._px.y);
+    this._bounds.expandToIncludePoint(this._p2.x, this._p2.y);
+    this._bounds.expandBy(2,2);
   }
 
   setFocusPoint(x: number, y: number) {
