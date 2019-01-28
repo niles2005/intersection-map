@@ -1032,7 +1032,7 @@ var data = {
 
     {
       type: "文字",
-      px: { x: 1091, y: 375 },
+      px: { x: 1091, y: 370 },
       fontSize:20,
       fontName:"宋体",
       label:"陆家浜路"
