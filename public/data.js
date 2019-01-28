@@ -954,10 +954,17 @@ var data = {
 
     {
       type: "文字",
-      px: { x: 1093, y: 376 },
+      px: { x: 1091, y: 375 },
       fontSize:20,
       fontName:"宋体",
       label:"陆家浜路"
+    },
+    {
+      type: "文字",
+      px: { x: 850, y: 736 },
+      fontSize:20,
+      fontName:"宋体",
+      label:"西藏南路"
     },
   ]
 };
