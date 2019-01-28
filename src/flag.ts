@@ -12,7 +12,7 @@ export class Flag extends Graph {
   }
 
   static buildRYG(data: any, intersection?: Intersection) {
-    data.src = "./images/红黄绿.png";
+    data.src = "./images/ryg.png";
     return new Flag(data, intersection);
   }
 

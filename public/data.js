@@ -145,12 +145,12 @@ var data = {
     {
       type: "黄虚线",
       p1: { x: 726, y: 261 },
-      p2: { x: 726, y: -100 }
+      p2: { x: 726, y: 0 }
     },
     {
       type: "白虚线",
       p1: { x: 691, y: 261 },
-      p2: { x: 691, y: -100 }
+      p2: { x: 691, y: 0 }
     },
     {
       type: "白虚线",
@@ -409,12 +409,12 @@ var data = {
     {
       type: "黄虚线",
       p1: { x: 348, y: 399 },
-      p2: { x: -100, y: 399 }
+      p2: { x: 0, y: 399 }
     },
     {
       type: "白虚线",
       p1: { x: 348, y: 419 },
-      p2: { x: -100, y: 419 }
+      p2: { x: 0, y: 419 }
     },
     {
       type: "白虚线",
@@ -846,14 +846,14 @@ var data = {
       px: { x: 673, y: 341 },
       angle: 0,
       scale: 0.25,
-      src: "./images/行驶方向.png"
+      src: "./images/road_orient.png"
     },
     {
       type: "标志牌",
       px: { x: 803, y: 511 },
       angle: 90,
       scale: 0.25,
-      src: "./images/行驶方向.png"
+      src: "./images/road_orient.png"
     },
     
     {
@@ -861,14 +861,14 @@ var data = {
       px: { x: 602, y: 565 },
       angle: 180,
       scale: 0.25,
-      src: "./images/行驶方向.png"
+      src: "./images/road_orient.png"
     },
     {
       type: "标志牌",
       px: { x: 422, y: 408 },
       angle: 270,
       scale: 0.25,
-      src: "./images/行驶方向.png"
+      src: "./images/road_orient.png"
     },
 
     {
@@ -946,13 +946,13 @@ var data = {
       type: "标志牌",
       px: { x: 52, y: 301 },
       scale: 0.6,
-      src:"./images/道路入口2.png"
+      src:"./images/road_entry2.png"
     },
     {
       type: "标志牌",
       px: { x: 207, y: 246 },
       scale: 0.4,
-      src:"./images/道路入口1.png"
+      src:"./images/road_entry1.png"
     },
 
     {
@@ -960,28 +960,28 @@ var data = {
       px: { x: 390, y: 283 },
       angle:-90,
       scale: 0.3,
-      src:"./images/禁行摩托.png"
+      src:"./images/nomoto.png"
     },
     {
       type: "标志牌",
       px: { x: 391, y: 321 },
       angle:-90,
       scale: 0.3,
-      src:"./images/禁鸣喇叭.png"
+      src:"./images/no_honking.png"
     },
     
     {
       type: "标志牌",
       px: { x: 857, y: 228 },
       scale: 0.25,
-      src:"./images/禁行路牌2.png"
+      src:"./images/roadboard2.png"
     },
     
     {
       type: "标志牌",
       px: { x: 1087, y: 590 },
       scale: 0.25,
-      src:"./images/禁行路牌2.png"
+      src:"./images/roadboard2.png"
     },
     
 
@@ -990,19 +990,19 @@ var data = {
       type: "标志牌",
       px: { x: 165, y: 626 },
       scale: 0.5,
-      src:"./images/禁行路牌.png"
+      src:"./images/roadboard.png"
     },
     {
       type: "标志牌",
       px: { x: 308, y: 630 },
       scale: 0.5,
-      src:"./images/旅游.png"
+      src:"./images/tourism.png"
     },
     {
       type: "标志牌",
       px: { x: 370, y: 643 },
       scale: 0.5,
-      src:"./images/禁鸣喇叭.png"
+      src:"./images/no_honking.png"
     },
 
     
@@ -1013,21 +1013,21 @@ var data = {
       px: { x: 892, y: 576 },
       scale: 0.25,
       angle:90,
-      src:"./images/禁行非机动车.png"
+      src:"./images/nobike.png"
     },
     {
       type: "标志牌",
       px: { x: 896, y: 635 },
       scale: 0.25,
       angle:90,
-      src:"./images/禁行摩托.png"
+      src:"./images/nomoto.png"
     },
     {
       type: "标志牌",
       px: { x: 940, y: 633 },
       scale: 0.4,
       angle:90,
-      src:"./images/行车注意.png"
+      src:"./images/warinning1.png"
     },
 
     {

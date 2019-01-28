@@ -106,7 +106,7 @@ export class Intersection {
         }
       }
     }
-    this._mouseClickPoint = new Point({ x: x, y: y });
+    // this._mouseClickPoint = new Point({ x: x, y: y });
     this.repaint();
 
     return "x: " + Math.round(x) + ", y: " + Math.round(y);

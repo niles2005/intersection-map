@@ -15,7 +15,7 @@ canvas.addEventListener("mousewheel",mouseWheel,true);
 
 function mouseClick(event) {
     let str = intersection.mouseClick(event);
-    (<HTMLInputElement>document.getElementById("input")).value = str;
+    // (<HTMLInputElement>document.getElementById("input")).value = str;
 }
 
 function mouseMove(event) {
