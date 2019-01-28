@@ -61,4 +61,14 @@ export class Label extends Graph {
     this._gui.add(guiData, "x").onFinishChange(updateData);
     this._gui.add(guiData, "y").onFinishChange(updateData);
   }
+          getLabelSize(label,font) {
+            var labelHtml = "<label style='display:none;font:" + font + "'>" + label + "</label>";
+            var jLabel= $(labelHtml);
+            $("body").append(jLabel);
+            var width = jLabel.width();
+            var height = jLabel.height();
+            jLabel.remove();
+            return [width,height];
+        },
+
 }
