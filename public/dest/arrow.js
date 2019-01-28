@@ -4,8 +4,16 @@ export class Arrow extends Graph {
     constructor(data, intersection) {
         super(data, intersection);
         this._points = [];
+        this._data.angle = this._data.angle || 0;
         this._data.fillStyle = this._data.fillStyle || "white";
-        let arrowPoints = Arrow.arrowShapes[data.name];
+        this.init();
+    }
+    static build(data, intersection) {
+        return new Arrow(data, intersection);
+    }
+    init() {
+        this._points = [];
+        let arrowPoints = Arrow.arrowShapes[this._data.name];
         let arr = arrowPoints.split(",");
         let curve = false;
         let curveX, curveY;
@@ -32,9 +40,15 @@ export class Arrow extends Graph {
                 this._points.push([x, y]);
             }
         }
-    }
-    static build(data, intersection) {
-        return new Arrow(data, intersection);
+        if (!this._data.angle) {
+            this._data.angle = 0;
+        }
+        if (this._data.angle) {
+            this._bounds.rotate((this._data.angle / 180) * Math.PI);
+        }
+        if (this._data.px) {
+            this._bounds.translate(this._data.px.x, this._data.px.y);
+        }
     }
     _drawShape(ctx) {
         ctx.beginPath();
@@ -55,20 +69,69 @@ export class Arrow extends Graph {
     }
     draw(ctx) {
         ctx.save();
-        if (this._data.translate) {
-            ctx.translate(this._data.translate.x, this._data.translate.y);
+        if (this._data.px) {
+            ctx.translate(this._data.px.x, this._data.px.y);
         }
-        if (this._data.angle) {
-            ctx.rotate(this._data.angle);
-        }
+        ctx.rotate((this._data.angle / 180) * Math.PI);
         if (this._data.scale) {
             ctx.scale(this._data.scale.x, this._data.scale.y);
         }
-        ctx.fillStyle = this._data.fillStyle || "white";
+        ctx.fillStyle = this._data.fillStyle;
         this._drawShape(ctx);
         ctx.closePath();
         ctx.fill();
         ctx.restore();
+    }
+    initGui() {
+        let self = this;
+        this._gui = new dat.GUI();
+        let guiData = {
+            name: this._data.name,
+            x: this._data["px"].x,
+            y: this._data["px"].y,
+            angle: this._data["angle"],
+            scaleX: this._data["scale"].x,
+            scaleY: this._data["scale"].y,
+            fillStyle: this._data["fillStyle"]
+        };
+        function updateData() {
+            self._data.name = guiData.name;
+            self._data["px"].x = guiData.x;
+            self._data["px"].y = guiData.y;
+            self._data["angle"] = guiData.angle;
+            self._data["scale"].x = guiData.scaleX;
+            self._data["scale"].y = guiData.scaleY;
+            self._data["fillStyle"] = guiData.fillStyle;
+            self.init();
+            self._intersection.repaint();
+        }
+        this._gui
+            .add(guiData, "name", {
+            直行: "direct",
+            左转: "left",
+            右转: "right",
+            直行左转: "direct-left",
+            直行右转: "direct-right"
+        })
+            .onFinishChange(updateData);
+        this._gui.add(guiData, "x").onFinishChange(updateData);
+        this._gui.add(guiData, "y").onFinishChange(updateData);
+        this._gui
+            .add(guiData, "angle")
+            .name("角度")
+            .onFinishChange(updateData);
+        this._gui
+            .add(guiData, "scaleX")
+            .name("比例X")
+            .onFinishChange(updateData);
+        this._gui
+            .add(guiData, "scaleY")
+            .name("比例Y")
+            .onFinishChange(updateData);
+        this._gui
+            .add(guiData, "fillStyle")
+            .name("填充样式")
+            .onFinishChange(updateData);
     }
 }
 Arrow.arrowShapes = {

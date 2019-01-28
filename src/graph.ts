@@ -1,6 +1,6 @@
 import { Intersection } from "./intersection";
 import { GUI } from "dat-gui";
-import { Bounds } from './bounds';
+import { Bounds } from './utils/bounds';
 
 export abstract class Graph {
     protected _data:any;
@@ -13,6 +13,14 @@ export abstract class Graph {
     }
 
     abstract draw(ctx:CanvasRenderingContext2D):void;
+
+    drawBounds(ctx:CanvasRenderingContext2D):void {
+        if(this._bounds) {
+            ctx.strokeStyle = "blue";
+            ctx.lineWidth = 2;
+            ctx.strokeRect(this._bounds.minX,this._bounds.minY,this._bounds.width,this._bounds.height);
+        }
+    }
 
     /**
      * 用于对当前聚焦的图形，输入点击的点，便于调试
@@ -29,7 +37,13 @@ export abstract class Graph {
         }
     }
 
-    initGui(): GUI {
-        return this._gui;
+    initGui() {
+    }
+
+    destroyGui(): void {
+        if(this._gui) {
+            this._gui.destroy();
+            this._gui = null;
+        }
     }
 }
