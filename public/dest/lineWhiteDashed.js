@@ -1,5 +1,7 @@
-import { LineWhiteSolid } from "./lineWhiteSolid";
-export class LineWhiteDashed extends LineWhiteSolid {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const lineWhiteSolid_1 = require("./lineWhiteSolid");
+class LineWhiteDashed extends lineWhiteSolid_1.LineWhiteSolid {
     static build(data, intersection) {
         return new LineWhiteDashed(data, intersection);
     }
@@ -20,3 +22,4 @@ export class LineWhiteDashed extends LineWhiteSolid {
         ctx.restore();
     }
 }
+exports.LineWhiteDashed = LineWhiteDashed;

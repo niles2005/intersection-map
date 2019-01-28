@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const graph_1 = require("./graph");
-class Shape extends graph_1.Graph {
+class Polyline extends graph_1.Graph {
     static build(data, intersection) {
-        return new Shape(data, intersection);
+        return new Polyline(data, intersection);
     }
     constructor(data, intersection) {
         super(data, intersection);
@@ -15,6 +15,8 @@ class Shape extends graph_1.Graph {
                 this._points[i] = this._points[i].trim();
             }
         }
+        this._data.strokeStyle = this._data.strokeStyle || "black";
+        this._data.lineWith = this._data.lineWith || 1;
     }
     draw(ctx) {
         let curve = false;
@@ -46,17 +48,10 @@ class Shape extends graph_1.Graph {
                 }
             }
         }
-        ctx.closePath();
-        if (this._data.fillStyle) {
-            ctx.fillStyle = this._data.fillStyle;
-            ctx.fill();
-        }
-        if (this._data.strokeStyle) {
-            ctx.strokeStyle = this._data.strokeStyle;
-            ctx.lineWith = this._data.lineWith || 1;
-            ctx.stroke();
-        }
+        ctx.strokeStyle = this._data.strokeStyle;
+        ctx.lineWith = this._data.lineWith;
+        ctx.stroke();
         ctx.restore();
     }
 }
-exports.Shape = Shape;
+exports.Polyline = Polyline;

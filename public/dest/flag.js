@@ -1,6 +1,8 @@
-import { Graph } from "./graph";
-import { Bounds } from './utils/bounds';
-export class Flag extends Graph {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const graph_1 = require("./graph");
+const bounds_1 = require("./utils/bounds");
+class Flag extends graph_1.Graph {
     static build(data, intersection) {
         return new Flag(data, intersection);
     }
@@ -18,7 +20,7 @@ export class Flag extends Graph {
         };
     }
     init() {
-        this._bounds = new Bounds();
+        this._bounds = new bounds_1.Bounds();
         let x = this._image.width;
         let y = this._image.height;
         if (this._data.scale) {
@@ -90,3 +92,4 @@ export class Flag extends Graph {
             .onFinishChange(updateData);
     }
 }
+exports.Flag = Flag;

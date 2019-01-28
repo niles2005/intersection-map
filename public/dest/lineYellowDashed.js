@@ -1,5 +1,7 @@
-import { LineYellowSolid } from "./lineYellowSolid";
-export class LineYellowDashed extends LineYellowSolid {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const lineYellowSolid_1 = require("./lineYellowSolid");
+class LineYellowDashed extends lineYellowSolid_1.LineYellowSolid {
     static build(data, intersection) {
         return new LineYellowDashed(data, intersection);
     }
@@ -20,3 +22,4 @@ export class LineYellowDashed extends LineYellowSolid {
         ctx.restore();
     }
 }
+exports.LineYellowDashed = LineYellowDashed;

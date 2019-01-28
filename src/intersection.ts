@@ -15,6 +15,7 @@ import { PoleFlag } from "./PoleFlag";
 import { Flag } from "./flag";
 import { GUI } from "dat-gui";
 import { Label } from "./label";
+import { Polyline } from "./polyline";
 declare var dat;
 
 export class Intersection {
@@ -32,6 +33,7 @@ export class Intersection {
 
   private _graphBuilder: any = {
     点: Point.build,
+    折线: Polyline.build,
     白实线: LineWhiteSolid.build,
     白虚线: LineWhiteDashed.build,
     黄实线: LineYellowSolid.build,

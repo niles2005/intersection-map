@@ -1,12 +1,12 @@
 var data = {
   graphs: [
     {
-      type: "背景图",
+      type: "背景图1",
       src: "images/intersection.png"
     },
     {
       type: "形状",
-      fillStyle: "rgba(128,221,174,0.3)",
+      fillStyle: "rgba(128,221,174,1)",
       strokeStyle: "#000000",
       lineWidth: 0.5,
       points:
@@ -29,6 +29,84 @@ var data = {
       points: "540,906,540,625,  515,545,   403,532,25,532"
     },
 
+    {
+      type: "白实线",
+      p1: { x: 509, y: 685 },
+      p2: { x: 61, y: 685 },
+      strokeStyle:"black"
+    },
+    {
+      type: "白实线",
+      p1: { x: 857, y: 578 },
+      p2: { x: 877, y: 578 },
+      strokeStyle:"black"
+    },
+    {
+      type: "白实线",
+      p1: { x: 893, y: 474 },
+      p2: { x: 806, y: 511 },
+      strokeStyle:"black"
+    },
+    {
+      type: "白实线",
+      p1: { x: 656, y: 620 },
+      p2: { x: 602, y: 565 },
+      strokeStyle:"black"
+    },
+    {
+      type: "白实线",
+      p1: { x: 396, y: 443 },
+      p2: { x: 423, y: 409 },
+      strokeStyle:"black"
+    },
+    {
+      type: "白实线",
+      p1: { x: 643, y: 303 },
+      p2: { x: 674, y: 342 },
+      strokeStyle:"black"
+    },
+    {
+      type: "白实线",
+      p1: { x: 758, y: 242 },
+      p2: { x: 805, y: 242 },
+      strokeStyle:"black"
+    },
+    
+    {
+      type: "折线",
+      strokeStyle: "black",
+      points:
+        "418,272,418,342,493,342"
+    },
+    {
+      type: "折线",
+      strokeStyle: "black",
+      points:
+        "0,341,111,341,111,365"
+    },
+    {
+      type: "折线",
+      strokeStyle: "black",
+      points:
+        "164, 279,273,279,273,309"
+    },
+    
+    {
+      type: "折线",
+      strokeStyle: "black",
+      points:
+        "979,535,1019,622,1153,622"
+    },
+    {
+      type: "折线",
+      p1: { x: 817, y: 624 },
+      p2: { x: 877, y: 624 },
+      strokeStyle:"black",
+      points:"817,624,877,624,877,663,965,663"
+    },
+
+    
+    
     {
       type: "白实线",
       p1: { x: 516, y: 261 },
@@ -910,7 +988,7 @@ var data = {
 
     {
       type: "标志牌",
-      px: { x: 165, y: 631 },
+      px: { x: 165, y: 626 },
       scale: 0.5,
       src:"./images/禁行路牌.png"
     },
@@ -961,7 +1039,7 @@ var data = {
     },
     {
       type: "文字",
-      px: { x: 850, y: 736 },
+      px: { x: 840, y: 736 },
       fontSize:20,
       fontName:"宋体",
       label:"西藏南路"

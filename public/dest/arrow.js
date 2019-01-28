@@ -1,6 +1,8 @@
-import { Graph } from "./graph";
-import { Bounds } from "./utils/bounds";
-export class Arrow extends Graph {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const graph_1 = require("./graph");
+const bounds_1 = require("./utils/bounds");
+class Arrow extends graph_1.Graph {
     constructor(data, intersection) {
         super(data, intersection);
         this._points = [];
@@ -17,7 +19,7 @@ export class Arrow extends Graph {
         let arr = arrowPoints.split(",");
         let curve = false;
         let curveX, curveY;
-        this._bounds = new Bounds();
+        this._bounds = new bounds_1.Bounds();
         for (let i = 0; i < arr.length; i += 2) {
             let strX = arr[i];
             let strY = arr[i + 1];
@@ -135,3 +137,4 @@ Arrow.arrowShapes = {
     "direct-right": "3.9,52.4,7.9,31.6,5.3,31.5,5.4,0.2,2.6,0,2.7,3.5,-4.1,10.3,-4.4,3,-7.9,15.8,-4.3,29.5,-4.3,20.9,2.6,14,2.8,31.5,0,31.4,3.8,52.3",
     "direct-left": "-3.9,52.4,-7.9,31.6,-5.3,31.5,-5.4,0.2,-2.6,0,-2.7,3.5,4.1,10.3,4.4,3,7.9,15.8,4.3,29.5,4.3,20.9,-2.6,14,-2.8,31.5,0,31.4,-3.8,52.3"
 };
+exports.Arrow = Arrow;

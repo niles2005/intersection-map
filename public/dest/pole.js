@@ -1,5 +1,7 @@
-import { Graph } from "./graph";
-export class Pole extends Graph {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const graph_1 = require("./graph");
+class Pole extends graph_1.Graph {
     constructor(data, intersection) {
         super(data, intersection);
         this._px = data.px;
@@ -38,3 +40,4 @@ export class Pole extends Graph {
             .onFinishChange(updateData);
     }
 }
+exports.Pole = Pole;

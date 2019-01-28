@@ -1,41 +1,45 @@
-import { Background } from "./background";
-import { Point } from "./point";
-import { Shape } from "./shape";
-import { IntersectCurve } from "./intersectCurve";
-import { ZebraLine } from "./zebraLine";
-import { Arrow } from "./arrow";
-import { LineYellowSolid } from "./lineYellowSolid";
-import { LineWhiteSolid } from "./lineWhiteSolid";
-import { LineYellowDashed } from "./lineYellowDashed";
-import { LineWhiteDashed } from "./lineWhiteDashed";
-import { Curve } from "./curve";
-import { PoleBoard } from "./PoleBoard";
-import { PoleFlag } from "./PoleFlag";
-import { Flag } from "./flag";
-import { Label } from "./label";
-export class Intersection {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const background_1 = require("./background");
+const point_1 = require("./point");
+const shape_1 = require("./shape");
+const intersectCurve_1 = require("./intersectCurve");
+const zebraLine_1 = require("./zebraLine");
+const arrow_1 = require("./arrow");
+const lineYellowSolid_1 = require("./lineYellowSolid");
+const lineWhiteSolid_1 = require("./lineWhiteSolid");
+const lineYellowDashed_1 = require("./lineYellowDashed");
+const lineWhiteDashed_1 = require("./lineWhiteDashed");
+const curve_1 = require("./curve");
+const PoleBoard_1 = require("./PoleBoard");
+const PoleFlag_1 = require("./PoleFlag");
+const flag_1 = require("./flag");
+const label_1 = require("./label");
+const polyline_1 = require("./polyline");
+class Intersection {
     constructor(canvas, data) {
         this._graphs = [];
         this._origoX = 0;
         this._origoY = 0;
         this._globalScale = 1;
         this._graphBuilder = {
-            点: Point.build,
-            白实线: LineWhiteSolid.build,
-            白虚线: LineWhiteDashed.build,
-            黄实线: LineYellowSolid.build,
-            黄虚线: LineYellowDashed.build,
-            斑马线: ZebraLine.build,
-            相交曲线: IntersectCurve.build,
-            曲线: Curve.build,
-            箭头: Arrow.build,
-            形状: Shape.build,
-            路牌柱: PoleBoard.build,
-            标志牌柱: PoleFlag.build,
-            标志牌: Flag.build,
-            红黄绿灯: Flag.buildRYG,
-            背景图: Background.build,
-            文字: Label.build
+            点: point_1.Point.build,
+            折线: polyline_1.Polyline.build,
+            白实线: lineWhiteSolid_1.LineWhiteSolid.build,
+            白虚线: lineWhiteDashed_1.LineWhiteDashed.build,
+            黄实线: lineYellowSolid_1.LineYellowSolid.build,
+            黄虚线: lineYellowDashed_1.LineYellowDashed.build,
+            斑马线: zebraLine_1.ZebraLine.build,
+            相交曲线: intersectCurve_1.IntersectCurve.build,
+            曲线: curve_1.Curve.build,
+            箭头: arrow_1.Arrow.build,
+            形状: shape_1.Shape.build,
+            路牌柱: PoleBoard_1.PoleBoard.build,
+            标志牌柱: PoleFlag_1.PoleFlag.build,
+            标志牌: flag_1.Flag.build,
+            红黄绿灯: flag_1.Flag.buildRYG,
+            背景图: background_1.Background.build,
+            文字: label_1.Label.build
         };
         this._canvas = canvas;
         this._ctx = this._canvas.getContext("2d");
@@ -84,7 +88,7 @@ export class Intersection {
                 }
             }
         }
-        this._mouseClickPoint = new Point({ x: x, y: y });
+        this._mouseClickPoint = new point_1.Point({ x: x, y: y });
         this.repaint();
         return "x: " + Math.round(x) + ", y: " + Math.round(y);
     }
@@ -125,3 +129,4 @@ export class Intersection {
         this._ctx.restore();
     }
 }
+exports.Intersection = Intersection;

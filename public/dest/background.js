@@ -1,5 +1,7 @@
-import { Graph } from "./graph";
-export class Background extends Graph {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const graph_1 = require("./graph");
+class Background extends graph_1.Graph {
     static build(data, intersection) {
         return new Background(data, intersection);
     }
@@ -22,3 +24,4 @@ export class Background extends Graph {
         }
     }
 }
+exports.Background = Background;

@@ -1,5 +1,7 @@
-import { Line } from "./line";
-export class LineYellowSolid extends Line {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const line_1 = require("./line");
+class LineYellowSolid extends line_1.Line {
     static build(data, intersection) {
         return new LineYellowSolid(data, intersection);
     }
@@ -9,3 +11,4 @@ export class LineYellowSolid extends Line {
         this._data.strokeStyle = this._data.strokeStyle || "yellow";
     }
 }
+exports.LineYellowSolid = LineYellowSolid;

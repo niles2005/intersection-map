@@ -1,4 +1,6 @@
-export class Graph {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class Graph {
     constructor(data, intersection) {
         this._data = data;
         this._intersection = intersection;
@@ -26,3 +28,4 @@ export class Graph {
         }
     }
 }
+exports.Graph = Graph;

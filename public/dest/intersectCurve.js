@@ -1,5 +1,7 @@
-import { Graph } from "./graph";
-export class IntersectCurve extends Graph {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const graph_1 = require("./graph");
+class IntersectCurve extends graph_1.Graph {
     static build(data, intersection) {
         return new IntersectCurve(data, intersection);
     }
@@ -40,3 +42,4 @@ export class IntersectCurve extends Graph {
         ctx.stroke();
     }
 }
+exports.IntersectCurve = IntersectCurve;

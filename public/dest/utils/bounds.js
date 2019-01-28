@@ -1,4 +1,6 @@
-export class Bounds {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class Bounds {
     constructor(x1, y1, x2, y2) {
         this.init(x1, y1, x2, y2);
     }
@@ -201,3 +203,4 @@ export class Bounds {
             ")");
     }
 }
+exports.Bounds = Bounds;

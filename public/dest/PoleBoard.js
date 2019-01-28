@@ -1,6 +1,8 @@
-import { Bounds } from "./utils/bounds";
-import { Pole } from "./pole";
-export class PoleBoard extends Pole {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const bounds_1 = require("./utils/bounds");
+const pole_1 = require("./pole");
+class PoleBoard extends pole_1.Pole {
     static build(data, intersection) {
         return new PoleBoard(data, intersection);
     }
@@ -8,7 +10,7 @@ export class PoleBoard extends Pole {
         super(data, intersection);
     }
     init() {
-        this._bounds = new Bounds();
+        this._bounds = new bounds_1.Bounds();
         this._bounds.expandToIncludePoint(-12, -12);
         this._bounds.expandToIncludePoint(12, 12);
         if (this._px) {
@@ -34,3 +36,4 @@ export class PoleBoard extends Pole {
         ctx.restore();
     }
 }
+exports.PoleBoard = PoleBoard;

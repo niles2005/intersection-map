@@ -1,9 +1,11 @@
-import { Intersection } from "./intersection";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const intersection_1 = require("./intersection");
 if (!window["data"]) {
     console.error("can not find intersection data!");
 }
 let canvas = document.getElementById("canvas");
-let intersection = new Intersection(canvas, window["data"]);
+let intersection = new intersection_1.Intersection(canvas, window["data"]);
 canvas.addEventListener('click', mouseClick, true);
 canvas.addEventListener('mousemove', mouseMove, true);
 canvas.addEventListener("mousewheel", mouseWheel, true);

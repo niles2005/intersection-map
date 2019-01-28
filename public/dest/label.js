@@ -1,6 +1,8 @@
-import { Graph } from "./graph";
-import { Bounds } from "./utils/bounds";
-export class Label extends Graph {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const graph_1 = require("./graph");
+const bounds_1 = require("./utils/bounds");
+class Label extends graph_1.Graph {
     static build(data, intersection) {
         return new Label(data, intersection);
     }
@@ -18,7 +20,7 @@ export class Label extends Graph {
         let size = this.getLabelSize(this._data.label, this._font);
         this._width = size[0];
         this._height = size[1];
-        this._bounds = new Bounds();
+        this._bounds = new bounds_1.Bounds();
         this._bounds.expandToIncludePoint(-this._width / 2, -this._height / 2);
         this._bounds.expandToIncludePoint(this._width / 2, this._height / 2);
         if (this._px) {
@@ -80,3 +82,4 @@ export class Label extends Graph {
         return size;
     }
 }
+exports.Label = Label;

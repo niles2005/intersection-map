@@ -1,6 +1,8 @@
-import { Graph } from "./graph";
-import { Bounds } from "./utils/bounds";
-export class ZebraLine extends Graph {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const graph_1 = require("./graph");
+const bounds_1 = require("./utils/bounds");
+class ZebraLine extends graph_1.Graph {
     static build(data, intersection) {
         return new ZebraLine(data, intersection);
     }
@@ -13,7 +15,7 @@ export class ZebraLine extends Graph {
         this.init();
     }
     init() {
-        this._bounds = new Bounds();
+        this._bounds = new bounds_1.Bounds();
         let theta = Math.atan2(this._p2.y - this._p1.y, this._p2.x - this._p1.x);
         let x1 = this._p1.x + this._data.zebraWidth * Math.cos(theta - Math.PI / 2);
         let y1 = this._p1.y + this._data.zebraWidth * Math.sin(theta - Math.PI / 2);
@@ -86,3 +88,4 @@ export class ZebraLine extends Graph {
             .onFinishChange(updateData);
     }
 }
+exports.ZebraLine = ZebraLine;

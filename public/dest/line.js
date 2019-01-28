@@ -1,6 +1,8 @@
-import { Graph } from "./graph";
-import { Bounds } from "./utils/bounds";
-export class Line extends Graph {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const graph_1 = require("./graph");
+const bounds_1 = require("./utils/bounds");
+class Line extends graph_1.Graph {
     static build(data, intersection) {
         return new Line(data, intersection);
     }
@@ -11,7 +13,7 @@ export class Line extends Graph {
         this.init();
     }
     init() {
-        this._bounds = new Bounds();
+        this._bounds = new bounds_1.Bounds();
         this._bounds.expandToIncludePoint(this._p1.x, this._p1.y);
         this._bounds.expandToIncludePoint(this._p2.x, this._p2.y);
         this._bounds.expandBy(2, 2);
@@ -83,3 +85,4 @@ export class Line extends Graph {
             .onFinishChange(updateData);
     }
 }
+exports.Line = Line;
