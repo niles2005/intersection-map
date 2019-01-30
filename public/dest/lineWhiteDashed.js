@@ -1,15 +1,30 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-const lineWhiteSolid_1 = require("./lineWhiteSolid");
-class LineWhiteDashed extends lineWhiteSolid_1.LineWhiteSolid {
-    static build(data, intersection) {
+var lineWhiteSolid_1 = require("./lineWhiteSolid");
+var LineWhiteDashed = (function (_super) {
+    __extends(LineWhiteDashed, _super);
+    function LineWhiteDashed(data, intersection) {
+        var _this = _super.call(this, data, intersection) || this;
+        _this._data.dash = _this._data.dash || [25, 50];
+        return _this;
+    }
+    LineWhiteDashed.build = function (data, intersection) {
         return new LineWhiteDashed(data, intersection);
-    }
-    constructor(data, intersection) {
-        super(data, intersection);
-        this._data.dash = this._data.dash || [25, 50];
-    }
-    draw(ctx) {
+    };
+    LineWhiteDashed.prototype.draw = function (ctx) {
         ctx.save();
         ctx.beginPath();
         ctx.moveTo(this._p1.x, this._p1.y);
@@ -20,6 +35,7 @@ class LineWhiteDashed extends lineWhiteSolid_1.LineWhiteSolid {
         ctx.strokeStyle = this._data.strokeStyle;
         ctx.stroke();
         ctx.restore();
-    }
-}
+    };
+    return LineWhiteDashed;
+}(lineWhiteSolid_1.LineWhiteSolid));
 exports.LineWhiteDashed = LineWhiteDashed;

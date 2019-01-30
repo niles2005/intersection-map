@@ -108,6 +108,12 @@ export class Bounds {
       );
     }
   }
+  scale(x:number,y:number) {
+    this._minx *= x;
+    this._miny *= y;
+    this._maxx *= x;
+    this._maxy *= y;
+  }
 
   rotate(alpha:number) {
     let newX1 = this._minx * Math.cos(alpha) - this._miny * Math.sin(alpha);

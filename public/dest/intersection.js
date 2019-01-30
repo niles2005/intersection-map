@@ -1,23 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const background_1 = require("./background");
-const point_1 = require("./point");
-const shape_1 = require("./shape");
-const intersectCurve_1 = require("./intersectCurve");
-const zebraLine_1 = require("./zebraLine");
-const arrow_1 = require("./arrow");
-const lineYellowSolid_1 = require("./lineYellowSolid");
-const lineWhiteSolid_1 = require("./lineWhiteSolid");
-const lineYellowDashed_1 = require("./lineYellowDashed");
-const lineWhiteDashed_1 = require("./lineWhiteDashed");
-const curve_1 = require("./curve");
-const PoleBoard_1 = require("./PoleBoard");
-const PoleFlag_1 = require("./PoleFlag");
-const flag_1 = require("./flag");
-const label_1 = require("./label");
-const polyline_1 = require("./polyline");
-class Intersection {
-    constructor(canvas, data) {
+var background_1 = require("./background");
+var point_1 = require("./point");
+var shape_1 = require("./shape");
+var intersectCurve_1 = require("./intersectCurve");
+var zebraLine_1 = require("./zebraLine");
+var arrow_1 = require("./arrow");
+var lineYellowSolid_1 = require("./lineYellowSolid");
+var lineWhiteSolid_1 = require("./lineWhiteSolid");
+var lineYellowDashed_1 = require("./lineYellowDashed");
+var lineWhiteDashed_1 = require("./lineWhiteDashed");
+var curve_1 = require("./curve");
+var PoleBoard_1 = require("./PoleBoard");
+var PoleFlag_1 = require("./PoleFlag");
+var flag_1 = require("./flag");
+var label_1 = require("./label");
+var polyline_1 = require("./polyline");
+var Intersection = (function () {
+    function Intersection(canvas, data) {
         this._graphs = [];
         this._origoX = 0;
         this._origoY = 0;
@@ -45,34 +45,43 @@ class Intersection {
         this._ctx = this._canvas.getContext("2d");
         this.initGraphs(data.graphs);
     }
-    get origoX() {
-        return this._origoX;
-    }
-    get origoY() {
-        return this._origoY;
-    }
-    set origoX(x) {
-        this._origoX = x;
-    }
-    set origoY(y) {
-        this._origoY = y;
-    }
-    initGraphs(graphsData) {
-        graphsData.forEach((graphData) => {
-            let type = graphData.type;
-            let theGraph = null;
-            let func = this._graphBuilder[type];
+    Object.defineProperty(Intersection.prototype, "origoX", {
+        get: function () {
+            return this._origoX;
+        },
+        set: function (x) {
+            this._origoX = x;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Intersection.prototype, "origoY", {
+        get: function () {
+            return this._origoY;
+        },
+        set: function (y) {
+            this._origoY = y;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Intersection.prototype.initGraphs = function (graphsData) {
+        var _this = this;
+        graphsData.forEach(function (graphData) {
+            var type = graphData.type;
+            var theGraph = null;
+            var func = _this._graphBuilder[type];
             if (func) {
-                theGraph = func(graphData, this);
+                theGraph = func(graphData, _this);
             }
             if (theGraph) {
-                this._graphs.push(theGraph);
+                _this._graphs.push(theGraph);
             }
         });
-    }
-    mouseClick(event) {
-        let x = (event.offsetX - this._origoX) / this._globalScale;
-        let y = (event.offsetY - this._origoY) / this._globalScale;
+    };
+    Intersection.prototype.mouseClick = function (event) {
+        var x = (event.offsetX - this._origoX) / this._globalScale;
+        var y = (event.offsetY - this._origoY) / this._globalScale;
         if (this._selectGraph && this._selectGraph.containPoint(x, y)) {
         }
         else {
@@ -80,7 +89,7 @@ class Intersection {
                 this._selectGraph.destroyGui();
                 this._selectGraph = null;
             }
-            for (let i = this._graphs.length - 1; i >= 0; i--) {
+            for (var i = this._graphs.length - 1; i >= 0; i--) {
                 if (this._graphs[i].containPoint(x, y)) {
                     this._selectGraph = this._graphs[i];
                     this._selectGraph.initGui();
@@ -88,14 +97,13 @@ class Intersection {
                 }
             }
         }
-        this._mouseClickPoint = new point_1.Point({ x: x, y: y });
         this.repaint();
         return "x: " + Math.round(x) + ", y: " + Math.round(y);
-    }
-    mouseWheel(event) {
-        let posX = (1.0 * (event.offsetX - this._origoX)) /
+    };
+    Intersection.prototype.mouseWheel = function (event) {
+        var posX = (1.0 * (event.offsetX - this._origoX)) /
             (this._canvas.clientWidth * this._globalScale);
-        let posY = (1.0 * (event.offsetY - this._origoY)) /
+        var posY = (1.0 * (event.offsetY - this._origoY)) /
             (this._canvas.clientHeight * this._globalScale);
         if (event.deltaY === -100) {
             this._globalScale *= 1.1;
@@ -108,16 +116,17 @@ class Intersection {
         this._origoY =
             event.offsetY - posY * (this._canvas.clientHeight * this._globalScale);
         this.repaint();
-    }
-    mouseMove(event) {
-    }
-    repaint() {
+    };
+    Intersection.prototype.mouseMove = function (event) {
+    };
+    Intersection.prototype.repaint = function () {
+        var _this = this;
         this._ctx.save();
         this._ctx.clearRect(0, 0, this._canvas.clientWidth, this._canvas.clientHeight);
         this._ctx.translate(this._origoX, this._origoY);
         this._ctx.scale(this._globalScale, this._globalScale);
-        this._graphs.forEach(graph => {
-            graph.draw(this._ctx);
+        this._graphs.forEach(function (graph) {
+            graph.draw(_this._ctx);
         });
         if (this._selectGraph) {
             this._selectGraph.draw(this._ctx);
@@ -127,6 +136,7 @@ class Intersection {
             this._mouseClickPoint.draw(this._ctx);
         }
         this._ctx.restore();
-    }
-}
+    };
+    return Intersection;
+}());
 exports.Intersection = Intersection;

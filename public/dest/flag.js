@@ -1,34 +1,49 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-const graph_1 = require("./graph");
-const bounds_1 = require("./utils/bounds");
-class Flag extends graph_1.Graph {
-    static build(data, intersection) {
-        return new Flag(data, intersection);
-    }
-    static buildRYG(data, intersection) {
-        data.src = "./images/红黄绿.png";
-        return new Flag(data, intersection);
-    }
-    constructor(data, intersection) {
-        super(data, intersection);
-        this._px = data.px;
-        this._image = new Image();
-        this._image.src = data.src;
-        this._image.onload = () => {
-            this.init();
+var graph_1 = require("./graph");
+var bounds_1 = require("./utils/bounds");
+var Flag = (function (_super) {
+    __extends(Flag, _super);
+    function Flag(data, intersection) {
+        var _this = _super.call(this, data, intersection) || this;
+        _this._px = data.px;
+        _this._image = new Image();
+        _this._image.src = data.src;
+        _this._image.onload = function () {
+            _this.init();
         };
+        return _this;
     }
-    init() {
+    Flag.build = function (data, intersection) {
+        return new Flag(data, intersection);
+    };
+    Flag.buildRYG = function (data, intersection) {
+        data.src = "./images/ryg.png";
+        return new Flag(data, intersection);
+    };
+    Flag.prototype.init = function () {
         this._bounds = new bounds_1.Bounds();
-        let x = this._image.width;
-        let y = this._image.height;
-        if (this._data.scale) {
-            x *= this._data.scale;
-            y *= this._data.scale;
-        }
+        var x = this._image.width;
+        var y = this._image.height;
         this._bounds.expandToIncludePoint(-x / 2, -y / 2);
         this._bounds.expandToIncludePoint(x / 2, y / 2);
+        if (this._data.scale) {
+            this._bounds.scale(this._data.scale, this._data.scale);
+            this._data.angle = 0;
+        }
         if (!this._data.angle) {
             this._data.angle = 0;
         }
@@ -39,8 +54,8 @@ class Flag extends graph_1.Graph {
             this._bounds.translate(this._px.x, this._px.y);
         }
         this._intersection.repaint();
-    }
-    draw(ctx) {
+    };
+    Flag.prototype.draw = function (ctx) {
         if (this._image.width) {
             ctx.save();
             if (this._px) {
@@ -56,11 +71,11 @@ class Flag extends graph_1.Graph {
             ctx.drawImage(this._image, 0, 0);
             ctx.restore();
         }
-    }
-    initGui() {
-        let self = this;
+    };
+    Flag.prototype.initGui = function () {
+        var self = this;
         this._gui = new dat.GUI();
-        let guiData = {
+        var guiData = {
             x: this._data["px"].x,
             y: this._data["px"].y,
             angle: this._data["angle"],
@@ -90,6 +105,7 @@ class Flag extends graph_1.Graph {
             .add(guiData, "src")
             .name("图片")
             .onFinishChange(updateData);
-    }
-}
+    };
+    return Flag;
+}(graph_1.Graph));
 exports.Flag = Flag;

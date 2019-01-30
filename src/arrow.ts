@@ -43,7 +43,7 @@ export class Arrow extends Graph {
     for (let i = 0; i < arr.length; i += 2) {
       let strX = arr[i];
       let strY = arr[i + 1];
-      if (strX.startsWith("c")) {
+      if (strX[0] === "c") {//startsWith("c")
         strX = strX.substring(1);
         curveX = parseFloat(strX);
         curveY = parseFloat(strY);
@@ -60,6 +60,9 @@ export class Arrow extends Graph {
       } else {
         this._points.push([x, y]);
       }
+    }
+    if(this._data.scale) {
+      this._bounds.scale(this._data.scale,this._data.scale);
     }
     if (!this._data.angle) {
       this._data.angle = 0;

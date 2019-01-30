@@ -1,24 +1,39 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-const graph_1 = require("./graph");
-const bounds_1 = require("./utils/bounds");
-class Line extends graph_1.Graph {
-    static build(data, intersection) {
+var graph_1 = require("./graph");
+var bounds_1 = require("./utils/bounds");
+var Line = (function (_super) {
+    __extends(Line, _super);
+    function Line(data, intersection) {
+        var _this = _super.call(this, data, intersection) || this;
+        _this._p1 = data.p1;
+        _this._p2 = data.p2;
+        _this.init();
+        return _this;
+    }
+    Line.build = function (data, intersection) {
         return new Line(data, intersection);
-    }
-    constructor(data, intersection) {
-        super(data, intersection);
-        this._p1 = data.p1;
-        this._p2 = data.p2;
-        this.init();
-    }
-    init() {
+    };
+    Line.prototype.init = function () {
         this._bounds = new bounds_1.Bounds();
         this._bounds.expandToIncludePoint(this._p1.x, this._p1.y);
         this._bounds.expandToIncludePoint(this._p2.x, this._p2.y);
         this._bounds.expandBy(2, 2);
-    }
-    draw(ctx) {
+    };
+    Line.prototype.draw = function (ctx) {
         ctx.save();
         ctx.lineWidth = this._data.lineWidth || 1;
         ctx.strokeStyle = this._data.strokeStyle || "white";
@@ -28,11 +43,11 @@ class Line extends graph_1.Graph {
         ctx.lineCap = "butt";
         ctx.stroke();
         ctx.restore();
-    }
-    initGui() {
-        let self = this;
+    };
+    Line.prototype.initGui = function () {
+        var self = this;
         this._gui = new dat.GUI();
-        let guiData = {
+        var guiData = {
             x1: this._data["p1"].x,
             y1: this._data["p1"].y,
             x2: this._data["p2"].x,
@@ -59,8 +74,8 @@ class Line extends graph_1.Graph {
                 self._data.lineWidth = guiData.lineWidth;
             }
             if (guiData.dash) {
-                let arr = guiData.dash.split(",");
-                self._data.dash = arr.map(t => parseFloat(t));
+                var arr = guiData.dash.split(",");
+                self._data.dash = arr.map(function (t) { return parseFloat(t); });
             }
             self.init();
             self._intersection.repaint();
@@ -83,6 +98,7 @@ class Line extends graph_1.Graph {
             .add(guiData, "lineWidth")
             .name("画笔宽度")
             .onFinishChange(updateData);
-    }
-}
+    };
+    return Line;
+}(graph_1.Graph));
 exports.Line = Line;

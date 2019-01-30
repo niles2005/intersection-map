@@ -1,30 +1,45 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-const graph_1 = require("./graph");
-class Shape extends graph_1.Graph {
-    static build(data, intersection) {
-        return new Shape(data, intersection);
-    }
-    constructor(data, intersection) {
-        super(data, intersection);
-        this._intersection = intersection;
-        let strPoints = data.points;
+var graph_1 = require("./graph");
+var Shape = (function (_super) {
+    __extends(Shape, _super);
+    function Shape(data, intersection) {
+        var _this = _super.call(this, data, intersection) || this;
+        _this._intersection = intersection;
+        var strPoints = data.points;
         if (strPoints) {
-            this._points = strPoints.split(",");
-            for (let i = 0; i < this._points.length; i++) {
-                this._points[i] = this._points[i].trim();
+            _this._points = strPoints.split(",");
+            for (var i = 0; i < _this._points.length; i++) {
+                _this._points[i] = _this._points[i].trim();
             }
         }
+        return _this;
     }
-    draw(ctx) {
-        let curve = false;
-        let curveX, curveY;
-        let x, y;
+    Shape.build = function (data, intersection) {
+        return new Shape(data, intersection);
+    };
+    Shape.prototype.draw = function (ctx) {
+        var curve = false;
+        var curveX, curveY;
+        var x, y;
         ctx.save();
         ctx.beginPath();
-        for (let i = 0; i < this._points.length; i += 2) {
-            if (this._points[i].startsWith("c")) {
-                let strX = this._points[i].substring(1);
+        for (var i = 0; i < this._points.length; i += 2) {
+            if (this._points[i][0] === "c") {
+                var strX = this._points[i].substring(1);
                 curveX = parseFloat(strX);
                 curveY = parseFloat(this._points[i + 1]);
                 curve = true;
@@ -57,6 +72,7 @@ class Shape extends graph_1.Graph {
             ctx.stroke();
         }
         ctx.restore();
-    }
-}
+    };
+    return Shape;
+}(graph_1.Graph));
 exports.Shape = Shape;

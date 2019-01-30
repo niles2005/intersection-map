@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class Bounds {
-    constructor(x1, y1, x2, y2) {
+var Bounds = (function () {
+    function Bounds(x1, y1, x2, y2) {
         this.init(x1, y1, x2, y2);
     }
-    init(x1, y1, x2, y2) {
+    Bounds.prototype.init = function (x1, y1, x2, y2) {
         if (x1 === undefined) {
             this.setToNull();
         }
@@ -26,47 +26,71 @@ class Bounds {
                 this._maxy = y1;
             }
         }
-    }
-    setToNull() {
+    };
+    Bounds.prototype.setToNull = function () {
         this._minx = 0;
         this._miny = 0;
         this._maxx = -1;
         this._maxy = -1;
-    }
-    isNull() {
+    };
+    Bounds.prototype.isNull = function () {
         return this._maxx < this._minx;
-    }
-    get width() {
-        if (this.isNull())
-            return 0;
-        else
-            return this._maxx - this._minx;
-    }
-    get height() {
-        if (this.isNull())
-            return 0;
-        else
-            return this._maxy - this._miny;
-    }
-    get maxX() {
-        return this._maxx;
-    }
-    get minX() {
-        return this._minx;
-    }
-    get maxY() {
-        return this._maxy;
-    }
-    get minY() {
-        return this._miny;
-    }
-    getCenterX() {
+    };
+    Object.defineProperty(Bounds.prototype, "width", {
+        get: function () {
+            if (this.isNull())
+                return 0;
+            else
+                return this._maxx - this._minx;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Bounds.prototype, "height", {
+        get: function () {
+            if (this.isNull())
+                return 0;
+            else
+                return this._maxy - this._miny;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Bounds.prototype, "maxX", {
+        get: function () {
+            return this._maxx;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Bounds.prototype, "minX", {
+        get: function () {
+            return this._minx;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Bounds.prototype, "maxY", {
+        get: function () {
+            return this._maxy;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Bounds.prototype, "minY", {
+        get: function () {
+            return this._miny;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Bounds.prototype.getCenterX = function () {
         return (this._minx + this._maxx) / 2;
-    }
-    getCenterY() {
+    };
+    Bounds.prototype.getCenterY = function () {
         return (this._miny + this._maxy) / 2;
-    }
-    expandBy(distanceX, distanceY) {
+    };
+    Bounds.prototype.expandBy = function (distanceX, distanceY) {
         if (this.isNull())
             return;
         this._minx -= distanceX;
@@ -75,8 +99,8 @@ class Bounds {
         this._maxy += distanceY;
         if (this._minx > this._maxx || this._miny > this._maxy)
             this.setToNull();
-    }
-    expandToIncludePoint(x, y) {
+    };
+    Bounds.prototype.expandToIncludePoint = function (x, y) {
         if (this.isNull()) {
             this._minx = x;
             this._miny = y;
@@ -93,8 +117,8 @@ class Bounds {
             if (y > this._maxy)
                 this._maxy = y;
         }
-    }
-    expandToIncludeBounds(bounds) {
+    };
+    Bounds.prototype.expandToIncludeBounds = function (bounds) {
         if (this.isNull()) {
             this._minx = bounds._minx;
             this._miny = bounds._miny;
@@ -111,30 +135,36 @@ class Bounds {
             if (bounds._maxy > this._maxy)
                 this._maxy = bounds._maxy;
         }
-    }
-    translate(transX, transY) {
+    };
+    Bounds.prototype.translate = function (transX, transY) {
         if (this.isNull()) {
             return;
         }
         else {
             this.init(this._minx + transX, this._miny + transY, this._maxx + transX, this._maxy + transY);
         }
-    }
-    rotate(alpha) {
-        let newX1 = this._minx * Math.cos(alpha) - this._miny * Math.sin(alpha);
-        let newY1 = this._miny * Math.cos(alpha) + this._minx * Math.sin(alpha);
-        let newX2 = this._maxx * Math.cos(alpha) - this._maxy * Math.sin(alpha);
-        let newY2 = this._maxy * Math.cos(alpha) + this._maxx * Math.sin(alpha);
-        let newX3 = this._minx * Math.cos(alpha) - this._maxy * Math.sin(alpha);
-        let newY3 = this._maxy * Math.cos(alpha) + this._minx * Math.sin(alpha);
-        let newX4 = this._maxx * Math.cos(alpha) - this._miny * Math.sin(alpha);
-        let newY4 = this._miny * Math.cos(alpha) + this._maxx * Math.sin(alpha);
+    };
+    Bounds.prototype.scale = function (x, y) {
+        this._minx *= x;
+        this._miny *= y;
+        this._maxx *= x;
+        this._maxy *= y;
+    };
+    Bounds.prototype.rotate = function (alpha) {
+        var newX1 = this._minx * Math.cos(alpha) - this._miny * Math.sin(alpha);
+        var newY1 = this._miny * Math.cos(alpha) + this._minx * Math.sin(alpha);
+        var newX2 = this._maxx * Math.cos(alpha) - this._maxy * Math.sin(alpha);
+        var newY2 = this._maxy * Math.cos(alpha) + this._maxx * Math.sin(alpha);
+        var newX3 = this._minx * Math.cos(alpha) - this._maxy * Math.sin(alpha);
+        var newY3 = this._maxy * Math.cos(alpha) + this._minx * Math.sin(alpha);
+        var newX4 = this._maxx * Math.cos(alpha) - this._miny * Math.sin(alpha);
+        var newY4 = this._miny * Math.cos(alpha) + this._maxx * Math.sin(alpha);
         this._minx = Math.min(newX1, newX2, newX3, newX4);
         this._maxx = Math.max(newX1, newX2, newX3, newX4);
         this._miny = Math.min(newY1, newY2, newY3, newY4);
         this._maxy = Math.max(newY1, newY2, newY3, newY4);
-    }
-    intersectBounds(bounds) {
+    };
+    Bounds.prototype.intersectBounds = function (bounds) {
         if (this.isNull() || bounds.isNull())
             return false;
         else
@@ -142,17 +172,17 @@ class Bounds {
                 bounds._maxx >= this._minx &&
                 bounds._miny <= this._maxy &&
                 bounds._maxy >= this._miny);
-    }
-    intersectPoint(x, y) {
+    };
+    Bounds.prototype.intersectPoint = function (x, y) {
         return (x <= this._maxx && x >= this._minx && y <= this._maxy && y >= this._miny);
-    }
-    intersectRect(minX, minY, maxX, maxY) {
+    };
+    Bounds.prototype.intersectRect = function (minX, minY, maxX, maxY) {
         return (this._minx <= maxX &&
             this._maxx >= minX &&
             this._miny <= maxY &&
             this._maxy >= minY);
-    }
-    intersection(bounds) {
+    };
+    Bounds.prototype.intersection = function (bounds) {
         if (this.isNull() || bounds.isNull() || !this.intersectBounds(bounds)) {
             return new Bounds(0, 0, -1, -1);
         }
@@ -163,17 +193,17 @@ class Bounds {
             var intMaxY = this._maxy >= bounds._maxy ? bounds._maxy : this._maxy;
             return new Bounds(intMinX, intMaxX, intMinY, intMaxY);
         }
-    }
-    overlapPoint(x, y) {
+    };
+    Bounds.prototype.overlapPoint = function (x, y) {
         return this.intersectPoint(x, y);
-    }
-    overlapBounds(bounds) {
+    };
+    Bounds.prototype.overlapBounds = function (bounds) {
         return this.intersectBounds(bounds);
-    }
-    containPoint(x, y) {
+    };
+    Bounds.prototype.containPoint = function (x, y) {
         return (x >= this._minx && x <= this._maxx && y >= this._miny && y <= this._maxy);
-    }
-    containBounds(bounds) {
+    };
+    Bounds.prototype.containBounds = function (bounds) {
         if (this.isNull() || bounds.isNull())
             return false;
         else
@@ -181,8 +211,8 @@ class Bounds {
                 bounds._maxx <= this._maxx &&
                 bounds._miny >= this._miny &&
                 bounds._maxy <= this._maxy);
-    }
-    equals(bounds) {
+    };
+    Bounds.prototype.equals = function (bounds) {
         if (this.isNull())
             return bounds.isNull();
         else
@@ -190,8 +220,8 @@ class Bounds {
                 this._maxy == bounds._maxy &&
                 this._minx == bounds._minx &&
                 this._miny == bounds._miny);
-    }
-    toString() {
+    };
+    Bounds.prototype.toString = function () {
         return ("Bounds:(" +
             this._minx +
             "," +
@@ -201,6 +231,7 @@ class Bounds {
             "," +
             this._maxy +
             ")");
-    }
-}
+    };
+    return Bounds;
+}());
 exports.Bounds = Bounds;

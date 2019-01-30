@@ -59,7 +59,8 @@ export class Label extends Graph {
       y: this._data["px"].y,
       fontSize: this._data.fontSize,
       fontName: this._data.fontName,
-      fillStyle: this._data.fillStyle
+      fillStyle: this._data.fillStyle,
+      label: this._data.label
     };
     function updateData() {
       self._data["px"].x = guiData.x;
@@ -68,6 +69,7 @@ export class Label extends Graph {
       self._data["fontSize"] = guiData.fontSize;
       self._data["fontName"] = guiData.fontName;
       self._data["fillStyle"] = guiData.fillStyle;
+      self._data["label"] = guiData.label;
 
       self.init();
       self._intersection.repaint();
@@ -76,6 +78,10 @@ export class Label extends Graph {
     this._gui.add(guiData, "x").onFinishChange(updateData);
     this._gui.add(guiData, "y").onFinishChange(updateData);
 
+    this._gui
+      .add(guiData, "label")
+      .name("标题")
+      .onFinishChange(updateData);
     this._gui
       .add(guiData, "fontSize")
       .name("字体大小")

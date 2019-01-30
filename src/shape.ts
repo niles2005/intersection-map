@@ -27,7 +27,7 @@ export class Shape extends Graph {
     ctx.save();
     ctx.beginPath();
     for (let i = 0; i < this._points.length; i += 2) {
-      if (this._points[i].startsWith("c")) {
+      if (this._points[i][0] === "c") {//startsWith("c")
         let strX = this._points[i].substring(1);
         curveX = parseFloat(strX);
         curveY = parseFloat(this._points[i + 1]);

@@ -30,13 +30,13 @@ export class Flag extends Graph {
     this._bounds = new Bounds();
     let x = this._image.width;
     let y = this._image.height;
-    if (this._data.scale) {
-      x *= this._data.scale;
-      y *= this._data.scale;
-    }
     this._bounds.expandToIncludePoint(-x/2,-y/2);
     this._bounds.expandToIncludePoint(x/2,y/2);
 
+    if (this._data.scale) {
+      this._bounds.scale(this._data.scale,this._data.scale);
+      this._data.angle = 0;
+    }
     if (!this._data.angle) {
       this._data.angle = 0;
     }
